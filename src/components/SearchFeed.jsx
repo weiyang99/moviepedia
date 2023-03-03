@@ -29,7 +29,7 @@ const SearchFeed = () => {
             </Stack>
             <Box
                 p={2}
-                sx={{ overflowY: 'auto', height: '100vh', flex: 2 }
+                sx={{ height: '100vh', flex: 2 }
                 }
             >
                 <Typography
@@ -42,8 +42,8 @@ const SearchFeed = () => {
                 </Typography>
 
                 <Movies movies={movies} />
-                <Footer />
             </Box>
+            <Footer />
         </>
     )
 

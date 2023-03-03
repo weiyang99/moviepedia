@@ -3,7 +3,7 @@ import React from 'react'
 
 const Footer = () => {
     return (
-        <Box mt={6}>
+        <Box pb={3}>
             <Typography color='gray' textAlign='center'>
                 Done By: Wei Yang
             </Typography>

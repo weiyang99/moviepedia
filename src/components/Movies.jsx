@@ -1,6 +1,6 @@
 import { Stack, Box } from '@mui/material'
-import Loader from './Loader'
 import MovieCard from './MovieCard'
+import Loader from './Loader'
 
 const Movies = ({ movies }) => {
     if (!movies?.length) return <Loader />
