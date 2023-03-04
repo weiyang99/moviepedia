@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import './App.css';
+import './App.scss';
 import Home from './components/Home';
 import SearchFeed from './components/SearchFeed';
 
