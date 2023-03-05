@@ -18,7 +18,7 @@ const SearchBar = () => {
     }
 
     return (
-        <Stack direction="row" alignItems="center" justifyContent='center' p={5} sx={{ background: '#000', top: 0 }}>
+        <Stack direction="row" alignItems="center" justifyContent='center' pt={5} pb={5} sx={{ background: '#000', top: 0 }}>
             <Paper
                 component="form"
                 onSubmit={handleSubmit}
