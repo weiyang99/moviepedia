@@ -5,6 +5,7 @@ import { Movie } from '@mui/icons-material'
 
 import Movies from './Movies'
 import { fetchFromAPI } from './fetchFromAPI'
+import { REACT_APP_API_KEY } from '../config'
 import SearchBar from './SearchBar'
 import Footer from './Footer'
 
@@ -12,13 +13,19 @@ const SearchFeed = () => {
     const { searchTerm } = useParams()
     const [movies, setMovies] = useState([])
 
+    // change the page
+
     useEffect(() => {
-        fetchFromAPI(`?q=${searchTerm}`)
-            .then((data) => setMovies(data.d))
+        fetchFromAPI(`search/movie?api_key=${REACT_APP_API_KEY}&query=${searchTerm}&language=en-US&page=1`)
+            .then((data) => setMovies(data.results))
     }, [searchTerm])
 
     return (
-        <>
+        <Box
+            p={2}
+            sx={{ flex: 2 }
+            }
+        >
             <Stack direction='row' alignItems='center' justifyContent='center'>
                 <Link to='/'>
                     <IconButton type='submit' sx={{ p: '10px', color: 'darkOrange' }}>
@@ -27,24 +34,18 @@ const SearchFeed = () => {
                 </Link>
                 <SearchBar />
             </Stack>
-            <Box
-                p={2}
-                sx={{ height: '100vh', flex: 2 }
-                }
+            <Typography
+                variant='h4'
+                fontWeight='bold'
+                mb={10}
+                sx={{ color: 'white' }}
             >
-                <Typography
-                    variant='h4'
-                    fontWeight='bold'
-                    mb={2}
-                    sx={{ color: 'white' }}
-                >
-                    Search Results for: <span style={{ color: 'gold' }}>{searchTerm}</span>
-                </Typography>
+                Search Results for: <span style={{ color: 'gold' }}>{searchTerm}</span>
+            </Typography>
 
-                <Movies movies={movies} />
-            </Box>
+            <Movies movies={movies} />
             <Footer />
-        </>
+        </Box>
     )
 
 }
