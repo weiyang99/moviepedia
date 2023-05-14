@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Box, IconButton, Typography, Stack } from '@mui/material'
+import { Box, IconButton, Typography, Stack, Pagination, PaginationItem } from '@mui/material'
 import { Link, useParams } from 'react-router-dom'
 import { Movie } from '@mui/icons-material'
 
@@ -12,19 +12,28 @@ import Footer from './Footer'
 const SearchFeed = () => {
     const { searchTerm } = useParams()
     const [movies, setMovies] = useState([])
+    const [pageNumber, setPageNumber] = useState(1)
+    const [totalPages, setTotalPages] = useState()
 
-    // change the page
+    const handleChange = (e, p) => {
+        e.preventDefault()
+        setPageNumber(p)
+    }
 
     useEffect(() => {
-        fetchFromAPI(`search/movie?api_key=${REACT_APP_API_KEY}&query=${searchTerm}&language=en-US&page=1`)
+        fetchFromAPI(`search/movie?api_key=${REACT_APP_API_KEY}&query=${searchTerm}&language=en-US&page=${pageNumber}`)
             .then((data) => setMovies(data.results))
+    }, [searchTerm, pageNumber])
+
+    useEffect(() => {
+        fetchFromAPI(`search/movie?api_key=${REACT_APP_API_KEY}&query=${searchTerm}&language=en-US&page=${pageNumber}`)
+            .then((data) => setTotalPages(data.total_pages))
     }, [searchTerm])
 
     return (
         <Box
             p={2}
-            sx={{ flex: 2 }
-            }
+            sx={{ flex: 2, height: movies.length < 8 ? '100vh' : '100%' }}
         >
             <Stack direction='row' alignItems='center' justifyContent='center'>
                 <Link to='/'>
@@ -44,6 +53,14 @@ const SearchFeed = () => {
             </Typography>
 
             <Movies movies={movies} />
+
+            <Pagination
+                count={totalPages}
+                onChange={handleChange}
+                color='primary'
+                sx={{ margin: 'auto', alignItems: 'center', width: 'fit-content', backgroundColor: 'darkGrey', marginTop: '5em', borderRadius: '2em' }}
+            />
+
             <Footer />
         </Box>
     )

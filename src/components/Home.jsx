@@ -12,7 +12,6 @@ import SearchBar from './SearchBar'
 const Home = () => {
     const [moviesT, setMoviesT] = useState([])
     const [moviesP, setMoviesP] = useState([])
-    const [moviesTR, setMoviesTR] = useState([])
     const [moviesUC, setMoviesUC] = useState([])
 
     useEffect(() => {
@@ -23,11 +22,6 @@ const Home = () => {
     useEffect(() => {
         fetchFromAPI(`movie/popular?api_key=${REACT_APP_API_KEY}&language=en-US&page=1`)
             .then((data) => setMoviesP(data.results))
-    }, [])
-
-    useEffect(() => {
-        fetchFromAPI(`movie/top_rated?api_key=${REACT_APP_API_KEY}&language=en-US&page=1`)
-            .then((data) => setMoviesTR(data.results))
     }, [])
 
     useEffect(() => {
@@ -53,7 +47,7 @@ const Home = () => {
                 mt={5}
                 sx={{ color: 'gold' }}
             >
-                Trending
+                Top 20 <span style={{ color: 'white' }}>Trending</span>
             </Typography>
 
             <Movies movies={moviesT} />
@@ -65,7 +59,7 @@ const Home = () => {
                 mt={15}
                 sx={{ color: 'gold' }}
             >
-                Popular
+                Top 20 <span style={{ color: 'white' }}>Popular</span>
             </Typography>
 
             <Movies movies={moviesP} />
@@ -77,19 +71,7 @@ const Home = () => {
                 mt={15}
                 sx={{ color: 'gold' }}
             >
-                Top Rated
-            </Typography>
-
-            <Movies movies={moviesTR} />
-
-            <Typography
-                variant='h4'
-                fontWeight='bold'
-                mb={5}
-                mt={15}
-                sx={{ color: 'gold' }}
-            >
-                Upcoming
+                Top 20 <span style={{ color: 'white' }}>Upcoming</span>
             </Typography>
 
             <Movies movies={moviesUC} />

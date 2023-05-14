@@ -7,7 +7,7 @@ import SearchFeed from './components/SearchFeed';
 function App() {
   return (
     <BrowserRouter>
-      <Box sx={{ backgroundColor: '#000' }}>
+      <Box sx={{ backgroundColor: '#121212' }}>
         <Routes>
           <Route exact path='/' element={<Home />} />
           <Route path='/search/:searchTerm' element={<SearchFeed />} />
