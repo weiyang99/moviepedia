@@ -50,8 +50,9 @@ body {
 }
 
 .card_content {
-    background: #414141d7;
-    color: white;
+    background: #fff;
+    color: black;
+    font-weight: bold;
     text-align: center;
     position: absolute;
     bottom: -10em;
@@ -69,4 +70,10 @@ body {
     overflow-wrap: break-word;
     width: 170px;
     transition: all ease .35s;
+}
+
+.details {
+    color: lightgrey;
+    font-weight: normal;
+    line-height: 1.2rem;
 }

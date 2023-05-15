@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.scss';
 import Home from './components/Home';
 import SearchFeed from './components/SearchFeed';
+import MovieDetails from './components/MovieDetails';
 
 function App() {
   return (
@@ -11,8 +12,7 @@ function App() {
         <Routes>
           <Route exact path='/' element={<Home />} />
           <Route path='/search/:searchTerm' element={<SearchFeed />} />
-          {/* <Route path='/video/:id' element={<VideoDetail />} />
-        <Route path='/channel/:id' element={<ChannelDetail />} /> */}
+          <Route path='/movie/:id/:title' element={<MovieDetails />} />
         </Routes>
       </Box>
     </BrowserRouter>

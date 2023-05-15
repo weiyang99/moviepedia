@@ -44,10 +44,12 @@ const Home = () => {
                 variant='h4'
                 fontWeight='bold'
                 mb={5}
-                mt={5}
-                sx={{ color: 'gold' }}
+                mt={15}
+                pl={2}
+                pr={2}
+                sx={{ color: 'white', borderLeft: '7px solid gold', borderRight: '7px solid gold' }}
             >
-                Top 20 <span style={{ color: 'white' }}>Trending</span>
+                Top 20 Trending
             </Typography>
 
             <Movies movies={moviesT} />
@@ -56,10 +58,12 @@ const Home = () => {
                 variant='h4'
                 fontWeight='bold'
                 mb={5}
-                mt={15}
-                sx={{ color: 'gold' }}
+                mt={25}
+                pl={2}
+                pr={2}
+                sx={{ color: 'white', borderLeft: '7px solid gold', borderRight: '7px solid gold' }}
             >
-                Top 20 <span style={{ color: 'white' }}>Popular</span>
+                Top 20 Popular
             </Typography>
 
             <Movies movies={moviesP} />
@@ -68,10 +72,12 @@ const Home = () => {
                 variant='h4'
                 fontWeight='bold'
                 mb={5}
-                mt={15}
-                sx={{ color: 'gold' }}
+                mt={25}
+                pl={2}
+                pr={2}
+                sx={{ color: 'white', borderLeft: '7px solid gold', borderRight: '7px solid gold' }}
             >
-                Top 20 <span style={{ color: 'white' }}>Upcoming</span>
+                Top 20 Upcoming
             </Typography>
 
             <Movies movies={moviesUC} />
