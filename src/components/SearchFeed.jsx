@@ -8,6 +8,7 @@ import { fetchFromAPI } from './fetchFromAPI'
 import { REACT_APP_API_KEY } from '../config'
 import SearchBar from './SearchBar'
 import Footer from './Footer'
+import Menu from './Menu'
 
 const SearchFeed = () => {
     const { searchTerm } = useParams()
@@ -29,39 +30,43 @@ const SearchFeed = () => {
     }, [searchTerm, pageNumber])
 
     return (
-        <Box
-            p='0 8%'
-            sx={{ flex: 2, height: movies.length < 8 ? '100vh' : 'fit-content' }}
-        >
-            <Stack direction='row' alignItems='center' justifyContent='center'>
-                <Link to='/'>
-                    <IconButton type='submit' sx={{ p: '10px', color: 'darkOrange' }}>
-                        <Movie fontSize='large' />
-                    </IconButton>
-                </Link>
-                <SearchBar />
-            </Stack>
-            <Typography
-                variant='h4'
-                fontWeight='bold'
-                mb={10}
-                pl={2}
-                sx={{ color: 'white', borderLeft: '7px solid gold' }}
+        <>
+            <Menu />
+
+            <Box
+                p='0 8%'
+                sx={{ flex: 2, height: movies.length < 8 ? '100vh' : 'fit-content' }}
             >
-                Search Results for: <span style={{ color: 'gold' }}>{searchTerm}</span>
-            </Typography>
+                <Stack direction='row' alignItems='center' justifyContent='center' pt={2.5}>
+                    <Link to='/'>
+                        <IconButton type='submit' sx={{ p: '10px', color: 'darkOrange' }}>
+                            <Movie fontSize='large' />
+                        </IconButton>
+                    </Link>
+                    <SearchBar />
+                </Stack>
+                <Typography
+                    variant='h4'
+                    fontWeight='bold'
+                    mb={10}
+                    pl={2}
+                    sx={{ color: 'white', borderLeft: '7px solid gold' }}
+                >
+                    Search Results for: <span style={{ color: 'gold' }}>{searchTerm}</span>
+                </Typography>
 
-            <Movies movies={movies} />
+                <Movies movies={movies} />
 
-            <Pagination
-                count={totalPages}
-                onChange={handleChange}
-                color='primary'
-                sx={{ margin: 'auto', alignItems: 'center', width: 'fit-content', backgroundColor: 'darkGrey', marginTop: '5em', borderRadius: '2em' }}
-            />
+                <Pagination
+                    count={totalPages}
+                    onChange={handleChange}
+                    color='primary'
+                    sx={{ margin: 'auto', alignItems: 'center', width: 'fit-content', backgroundColor: 'darkGrey', marginTop: '5em', borderRadius: '2em' }}
+                />
 
-            <Footer />
-        </Box >
+                <Footer />
+            </Box >
+        </>
     )
 
 }

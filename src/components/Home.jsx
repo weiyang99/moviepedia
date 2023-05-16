@@ -5,6 +5,7 @@ import { fetchFromAPI } from './fetchFromAPI'
 import Footer from './Footer'
 import Movies from './Movies'
 import SearchBar from './SearchBar'
+import Menu from './Menu';
 
 // change page
 
@@ -17,14 +18,10 @@ const Home = () => {
     useEffect(() => {
         fetchFromAPI(`trending/movie/week?api_key=${REACT_APP_API_KEY}`)
             .then((data) => setMoviesT(data.results))
-    }, [])
 
-    useEffect(() => {
         fetchFromAPI(`movie/popular?api_key=${REACT_APP_API_KEY}&language=en-US&page=1`)
             .then((data) => setMoviesP(data.results))
-    }, [])
 
-    useEffect(() => {
         fetchFromAPI(`movie/upcoming?api_key=${REACT_APP_API_KEY}&language=en-US&page=1`)
             .then((data) => setMoviesUC(data.results))
     }, [])
@@ -36,6 +33,8 @@ const Home = () => {
             justifyContent='center'
             p='0 8%'
         >
+            <Menu />
+
             <Box>
                 <Typography color='gold' variant='h1' mt={5}>Moviepedia</Typography>
                 <SearchBar />

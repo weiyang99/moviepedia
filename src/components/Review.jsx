@@ -7,6 +7,7 @@ import { REACT_APP_API_KEY } from '../config'
 import { fetchFromAPI } from './fetchFromAPI'
 import ReviewContent from './ReviewContent'
 import Footer from './Footer'
+import Menu from './Menu'
 
 const Review = () => {
     const { id } = useParams()
@@ -31,39 +32,43 @@ const Review = () => {
     }, [id, pageNumber]);
 
     return (
-        <Box
-            p={2}
-            sx={{ flex: 2, height: reviews.length <= 1 ? '100vh' : 'fit-content' }}
-        >
-            <Stack direction='row' alignItems='center' justifyContent='center'>
-                <IconButton type='button' onClick={() => navigate(-1)} sx={{ p: '10px', color: 'yellow' }}>
-                    <ArrowBack fontSize='large' />
-                </IconButton>
-                <Link to='/'>
-                    <IconButton type='submit' sx={{ p: '10px', color: 'darkOrange' }}>
-                        <Movie fontSize='large' />
+
+        <>
+            <Menu />
+            <Box
+                p={2}
+                sx={{ flex: 2, height: reviews.length <= 1 ? '100vh' : 'fit-content' }}
+            >
+                <Stack direction='row' alignItems='center' justifyContent='center' pt={0.5}>
+                    <IconButton type='button' onClick={() => navigate(-1)} sx={{ p: '10px', color: 'gold' }}>
+                        <ArrowBack fontSize='large' />
                     </IconButton>
-                </Link>
-                <SearchBar />
-            </Stack>
+                    <Link to='/'>
+                        <IconButton type='submit' sx={{ p: '10px', color: 'darkOrange' }}>
+                            <Movie fontSize='large' />
+                        </IconButton>
+                    </Link>
+                    <SearchBar />
+                </Stack>
 
-            <Stack direction='column' justifyContent='center' gap={5} p='0 15%' mt={5}>
-                <ReviewContent reviews={reviews} />
-            </Stack>
+                <Stack direction='column' justifyContent='center' gap={5} p='0 15%' mt={5}>
+                    <ReviewContent reviews={reviews} />
+                </Stack>
 
-            <Pagination
-                count={totalPages}
-                onChange={handleChange}
-                color='primary'
-                sx={{ margin: 'auto', alignItems: 'center', width: 'fit-content', backgroundColor: 'darkGrey', marginTop: '5em', borderRadius: '2em' }}
-            />
+                <Pagination
+                    count={totalPages}
+                    onChange={handleChange}
+                    color='primary'
+                    sx={{ margin: 'auto', alignItems: 'center', width: 'fit-content', backgroundColor: 'darkGrey', marginTop: '5em', borderRadius: '2em' }}
+                />
 
-            <IconButton type='button' onClick={() => window.scrollTo(0, 0)}>
-                <KeyboardDoubleArrowUp fontSize='large' sx={{ position: 'fixed', bottom: '5%', right: '5%', backgroundColor: 'gold', borderRadius: '50%', color: 'black', p: '0.2em' }} />
-            </IconButton>
+                <IconButton type='button' onClick={() => window.scrollTo(0, 0)}>
+                    <KeyboardDoubleArrowUp fontSize='large' sx={{ position: 'fixed', bottom: '5%', right: '5%', backgroundColor: 'gold', borderRadius: '50%', color: 'black', p: '0.2em' }} />
+                </IconButton>
 
-            <Footer />
-        </Box>
+                <Footer />
+            </Box>
+        </>
     )
 }
 
