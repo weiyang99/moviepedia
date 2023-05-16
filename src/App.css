@@ -4,6 +4,7 @@ body {
   padding: 0;
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
+  scroll-behavior: smooth;
 }
 
 ::-webkit-scrollbar {
@@ -19,6 +20,27 @@ body {
 
 ::-webkit-scrollbar-track {
   background-color: transparent;
+}
+
+.menu {
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  height: 55%;
+  top: -100%;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8.3px);
+  -webkit-backdrop-filter: blur(8.3px);
+  transition: top 0.35s ease;
+}
+
+.menu-drop {
+  top: 0;
 }
 
 .search-bar {
@@ -43,8 +65,9 @@ body {
 }
 
 .card_content {
-  background: rgba(65, 65, 65, 0.8431372549);
-  color: white;
+  background: #fff;
+  color: black;
+  font-weight: bold;
   text-align: center;
   position: absolute;
   bottom: -10em;
@@ -62,4 +85,25 @@ body {
   overflow-wrap: break-word;
   width: 170px;
   transition: all ease 0.35s;
+}
+
+.details {
+  color: lightgrey;
+  font-weight: normal;
+  line-height: 1.2rem;
+  text-decoration: none;
+}
+
+.details-cast {
+  color: lightgrey;
+  font-weight: normal;
+  line-height: 1.2rem;
+  text-decoration: none;
+}
+.details-cast:hover {
+  color: gold;
+}
+
+.button:hover {
+  color: #fff;
 }/*# sourceMappingURL=App.css.map */

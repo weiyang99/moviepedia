@@ -6,6 +6,7 @@ import SearchFeed from './components/SearchFeed';
 import MovieDetails from './components/MovieDetails';
 import Review from './components/Review';
 import Genre from './components/Genre';
+import CastDetails from './components/CastDetails';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path='/movie/:id/:title' element={<MovieDetails />} />
           <Route path='/review/:id/:title' element={<Review />} />
           <Route path='/genre/:id/:genre' element={<Genre />} />
+          <Route path='/cast/:id/:name' element={<CastDetails />} />
         </Routes>
       </Box>
     </BrowserRouter>

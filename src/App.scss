@@ -98,6 +98,18 @@ body {
     color: lightgrey;
     font-weight: normal;
     line-height: 1.2rem;
+    text-decoration: none;
+}
+
+.details-cast {
+    color: lightgrey;
+    font-weight: normal;
+    line-height: 1.2rem;
+    text-decoration: none;
+
+    &:hover {
+        color: gold;
+    }
 }
 
 .button {

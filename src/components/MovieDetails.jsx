@@ -65,7 +65,7 @@ const MovieDetails = () => {
                                         <span className='details' key={idx}>{item.name}. </span>))}</Typography>
 
                                     <Typography variant='p' color='white' fontSize='0.85rem' fontWeight='700' mt={2}>Casts: {casts.slice(0, 5)?.map((item, idx) => (
-                                        <span className='details' key={idx}>{item.original_name}. </span>))}</Typography>
+                                        <Link to={`/cast/${item.id}/${item.original_name}`} className='details-cast' key={idx} >{item.original_name}. </Link>))}</Typography>
                                 </Stack>
 
                                 <Stack direction='column' width='50%'>
