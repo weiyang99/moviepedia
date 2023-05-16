@@ -12,11 +12,11 @@ const ReviewContent = ({ reviews }) => {
                         <Typography color='white' variant='p' fontSize='0.8rem'>@ {item.author_details.username}</Typography>
                     </Box>
 
-                    <Typography color='white' variant='p' mt={2} sx={{ display: 'flex', alignItems: 'center' }}>Rating: {item.author_details.rating ? item.author_details.rating : <>-</>} <StarIcon fontSize='small' sx={{ marginLeft: '0.2em', color: 'gold' }} /></Typography>
+                    <Typography color='white' variant='p' mt={2} sx={{ display: 'flex', alignItems: 'center' }}>Rating: {item.author_details.rating ? item.author_details.rating : '-'} <StarIcon fontSize='small' sx={{ marginLeft: '0.2em', color: 'gold' }} /></Typography>
 
                     <Typography color='lightgrey' variant='h6' fontSize='0.9rem' m='1em 0'>{item.content}</Typography>
 
-                    <Typography color='darkgrey' variant='h6' fontSize='0.9rem'>{item.updated_at}</Typography>
+                    <Typography color='darkgrey' variant='h6' fontSize='0.9rem'>Last Updated: {item.updated_at}</Typography>
                 </Box>
             ))}
         </>

@@ -1,20 +1,27 @@
 import React, { useEffect, useState } from 'react'
 import { Typography, Box, Stack, IconButton, CardMedia, Card } from '@mui/material'
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { REACT_APP_API_KEY } from '../config';
 import { fetchFromAPI } from './fetchFromAPI';
-import { Movie } from '@mui/icons-material';
+import { Movie, ArrowBack } from '@mui/icons-material';
 import SearchBar from './SearchBar';
 import Footer from './Footer';
 import SimilarMovies from './SimilarMovies';
 
 const MovieDetails = () => {
     const { id } = useParams()
+    const navigate = useNavigate()
     const [movieDetails, setMovieDetails] = useState([])
+    const [casts, setCasts] = useState([])
 
     useEffect(() => {
         fetchFromAPI(`movie/${id}?api_key=${REACT_APP_API_KEY}&language=en-US`)
             .then((data) => setMovieDetails(data))
+
+        fetchFromAPI(`movie/${id}/credits?api_key=${REACT_APP_API_KEY}&language=en-US`)
+            .then((data) => setCasts(data.cast))
+
+        window.scrollTo(0, 0)
     }, [id]);
 
 
@@ -24,6 +31,9 @@ const MovieDetails = () => {
             sx={{ flex: 2 }}
         >
             <Stack direction='row' alignItems='center' justifyContent='center'>
+                <IconButton type='button' onClick={() => navigate(-1)} sx={{ p: '10px', color: 'yellow' }}>
+                    <ArrowBack fontSize='large' />
+                </IconButton>
                 <Link to='/'>
                     <IconButton type='submit' sx={{ p: '10px', color: 'darkOrange' }}>
                         <Movie fontSize='large' />
@@ -51,8 +61,8 @@ const MovieDetails = () => {
                                 <Typography variant='p' color='white' fontSize='0.85rem' fontWeight='700' mt={2}>Genre: {movieDetails.genres?.map((item, idx) => (
                                     <span className='details' key={idx}>{item.name}. </span>))}</Typography>
 
-                                <Typography variant='p' color='white' fontSize='0.85rem' fontWeight='700' mt={2}>Casts: {movieDetails.casts?.map((item, idx) => (
-                                    <span className='details' key={idx}>{item.name}. </span>))}</Typography>
+                                <Typography variant='p' color='white' fontSize='0.85rem' fontWeight='700' mt={2}>Casts: {casts.slice(0, 5)?.map((item, idx) => (
+                                    <span className='details' key={idx}>{item.original_name}. </span>))}</Typography>
                             </Stack>
 
                             <Stack direction='column' width='50%'>
