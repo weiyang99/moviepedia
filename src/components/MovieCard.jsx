@@ -1,6 +1,6 @@
 import React from 'react'
 import { Card, CardContent, CardMedia } from '@mui/material'
-import NoPic from './NoPic'
+// import NoPic from './NoPic'
 import { Link } from 'react-router-dom'
 
 const MovieCard = ({ movie }) => {

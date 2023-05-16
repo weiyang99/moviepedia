@@ -4,6 +4,7 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import React, { useEffect, useState } from 'react'
 import { fetchFromAPI } from './fetchFromAPI';
 import { REACT_APP_API_KEY } from '../config';
+import { Link } from 'react-router-dom';
 
 const Menu = () => {
     const [genres, setGenres] = useState([])
@@ -11,6 +12,10 @@ const Menu = () => {
 
     const handleClick = () => {
         menu.classList.toggle('menu-drop')
+    };
+
+    window.onscroll = () => {
+        menu.classList.remove('menu-drop');
     };
 
     useEffect(() => {
@@ -24,7 +29,9 @@ const Menu = () => {
                 <CancelIcon type='button' onClick={handleClick} fontSize='inherit' sx={{ color: 'white', position: 'absolute', top: '14%', left: '13%', fontSize: '3rem', cursor: 'pointer' }} />
                 <Stack direction='row' justifyContent='center' alignItems='center' gap={5} flexWrap='wrap' p='10% 15%'>
                     {genres.map((item, idx) => (
-                        <Typography key={idx} variant='h6' fontWeight='bold' color='white'>{item.name}</Typography>
+                        <Link key={idx} to={`/genre/${item.id}/${item.name}`} style={{ textDecoration: 'none' }}>
+                            <Typography variant='h6' fontWeight='bold' color='white'>{item.name}</Typography>
+                        </Link>
                     ))}
                 </Stack>
             </Box>
