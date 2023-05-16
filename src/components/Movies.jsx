@@ -5,6 +5,12 @@ import Loader from './Loader'
 const Movies = ({ movies }) => {
     if (!movies?.length) return <Loader />
 
+    for (let i = 0; i < movies.length; i++) {
+        if (!movies[i]?.poster_path) {
+            delete movies[i]
+        }
+    }
+
     return (
         <Stack
             direction='row'

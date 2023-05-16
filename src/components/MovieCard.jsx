@@ -4,7 +4,7 @@ import NoPic from './NoPic'
 import { Link } from 'react-router-dom'
 
 const MovieCard = ({ movie }) => {
-    if (!movie.poster_path) return <NoPic movie={movie} />
+    // if (!movie.poster_path) return <NoPic movie={movie} />
 
     return (
         <Link to={`/movie/${movie.id}/${movie.original_title}`}>

@@ -4,6 +4,7 @@ import './App.scss';
 import Home from './components/Home';
 import SearchFeed from './components/SearchFeed';
 import MovieDetails from './components/MovieDetails';
+import Review from './components/Review';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route exact path='/' element={<Home />} />
           <Route path='/search/:searchTerm' element={<SearchFeed />} />
           <Route path='/movie/:id/:title' element={<MovieDetails />} />
+          <Route path='/review/:id/:title' element={<Review />} />
         </Routes>
       </Box>
     </BrowserRouter>

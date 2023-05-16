@@ -34,6 +34,7 @@ const Home = () => {
             direction='column'
             alignItems='center'
             justifyContent='center'
+            p='0 8%'
         >
             <Box>
                 <Typography color='gold' variant='h1' mt={5}>Moviepedia</Typography>

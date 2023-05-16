@@ -6,6 +6,7 @@ import { fetchFromAPI } from './fetchFromAPI';
 import { Movie } from '@mui/icons-material';
 import SearchBar from './SearchBar';
 import Footer from './Footer';
+import SimilarMovies from './SimilarMovies';
 
 const MovieDetails = () => {
     const { id } = useParams()
@@ -31,7 +32,7 @@ const MovieDetails = () => {
                 <SearchBar />
             </Stack>
 
-            <Box mt={5} sx={{ padding: '0 15%' }} >
+            <Box mt={5} sx={{ padding: '0 15%' }}>
                 <Stack direction='row' alignItems='center' justifyContent='center' gap={5}>
                     <Card sx={{ width: 300, height: 400 }}>
                         <CardMedia image={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`} sx={{ height: '100%' }}>
@@ -65,9 +66,17 @@ const MovieDetails = () => {
                             </Stack>
 
                         </Stack>
+
+                        <Link style={{ textDecoration: 'none', marginTop: '1em' }} to={`/review/${id}/${movieDetails.original_title}`}>
+                            <Typography className='button' variant='p' fontSize='0.85rem' fontWeight='700' color='gold'>
+                                Reviews
+                            </Typography>
+                        </Link>
                     </Stack>
                 </Stack >
             </Box >
+
+            <SimilarMovies id={id} />
 
             <Footer />
         </Box >

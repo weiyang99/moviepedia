@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Box, IconButton, Typography, Stack, Pagination, PaginationItem } from '@mui/material'
+import { Box, IconButton, Typography, Stack, Pagination } from '@mui/material'
 import { Link, useParams } from 'react-router-dom'
 import { Movie } from '@mui/icons-material'
 
@@ -22,18 +22,16 @@ const SearchFeed = () => {
 
     useEffect(() => {
         fetchFromAPI(`search/movie?api_key=${REACT_APP_API_KEY}&query=${searchTerm}&language=en-US&page=${pageNumber}`)
-            .then((data) => setMovies(data.results))
-    }, [searchTerm, pageNumber])
+            .then((data) => setMovies(data.results));
 
-    useEffect(() => {
         fetchFromAPI(`search/movie?api_key=${REACT_APP_API_KEY}&query=${searchTerm}&language=en-US&page=${pageNumber}`)
-            .then((data) => setTotalPages(data.total_pages))
-    }, [searchTerm])
+            .then((data) => setTotalPages(data.total_pages));
+    }, [searchTerm, pageNumber])
 
     return (
         <Box
-            p={2}
-            sx={{ flex: 2, height: movies.length < 8 ? '100vh' : '100%' }}
+            p='0 8%'
+            sx={{ flex: 2, height: movies.length < 8 ? '100vh' : 'fit-content' }}
         >
             <Stack direction='row' alignItems='center' justifyContent='center'>
                 <Link to='/'>
@@ -47,7 +45,8 @@ const SearchFeed = () => {
                 variant='h4'
                 fontWeight='bold'
                 mb={10}
-                sx={{ color: 'white' }}
+                pl={2}
+                sx={{ color: 'white', borderLeft: '7px solid gold' }}
             >
                 Search Results for: <span style={{ color: 'gold' }}>{searchTerm}</span>
             </Typography>
@@ -62,7 +61,7 @@ const SearchFeed = () => {
             />
 
             <Footer />
-        </Box>
+        </Box >
     )
 
 }
