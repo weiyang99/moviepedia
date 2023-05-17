@@ -43,7 +43,7 @@ const Genre = () => {
 
             <Box
                 p='0 8%'
-                sx={{ flex: 2, height: movies.length < 8 ? '100vh' : 'fit-content' }}
+                sx={{ flex: 2, height: movies.length < 8 ? '100vh' : 'fit-content', backgroundColor: '#191919' }}
             >
                 <Stack direction='row' alignItems='center' justifyContent='center' pt={2.5}>
                     <Link to='/'>

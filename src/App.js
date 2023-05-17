@@ -11,7 +11,7 @@ import CastDetails from './components/CastDetails';
 function App() {
   return (
     <BrowserRouter>
-      <Box sx={{ backgroundColor: '#121212' }}>
+      <Box>
         <Routes>
           <Route exact path='/' element={<Home />} />
           <Route path='/search/:searchTerm' element={<SearchFeed />} />

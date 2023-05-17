@@ -31,7 +31,7 @@ const CastDetails = () => {
             <Menu />
             <Box
                 p={2}
-                sx={{ flex: 2 }}
+                sx={{ flex: 2, background: '#191919' }}
             >
                 <Stack direction='row' alignItems='center' justifyContent='center' pt={0.5}>
                     <IconButton type='button' onClick={() => navigate(-1)} sx={{ p: '10px', color: 'gold' }}>

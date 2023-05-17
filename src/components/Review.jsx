@@ -37,7 +37,7 @@ const Review = () => {
             <Menu />
             <Box
                 p={2}
-                sx={{ flex: 2, height: reviews.length <= 1 ? '100vh' : 'fit-content' }}
+                sx={{ flex: 2, height: reviews.length <= 1 ? '100vh' : 'fit-content', backgroundColor: '#191919' }}
             >
                 <Stack direction='row' alignItems='center' justifyContent='center' pt={0.5}>
                     <IconButton type='button' onClick={() => navigate(-1)} sx={{ p: '10px', color: 'gold' }}>

@@ -13,12 +13,11 @@ const SimilarMovies = ({ id }) => {
     }, [id])
 
     return (
-        <Box padding='0 8%'>
+        <Box padding='0 8%' pt={15}>
             <Typography
                 variant='h4'
                 fontWeight='bold'
                 mb={5}
-                mt={15}
                 pl={2}
                 sx={{ color: 'white', borderLeft: '7px solid gold' }}
             >

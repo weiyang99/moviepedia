@@ -29,11 +29,9 @@ const MovieDetails = () => {
     return (
         <>
             <Menu />
-            <Box
-                p={2}
-                sx={{ flex: 2 }}
-            >
-                <Stack direction='row' alignItems='center' justifyContent='center' pt={0.5}>
+
+            <Box>
+                <Stack direction='row' alignItems='center' justifyContent='center' pt={0.5} sx={{ backgroundColor: '#191919' }}>
                     <IconButton type='button' onClick={() => navigate(-1)} sx={{ p: '10px', color: 'gold' }}>
                         <ArrowBack fontSize='large' />
                     </IconButton>
@@ -45,8 +43,11 @@ const MovieDetails = () => {
                     <SearchBar />
                 </Stack>
 
-                <Box mt={5} sx={{ padding: '0 15%' }}>
-                    <Stack direction='row' alignItems='center' justifyContent='center' gap={5}>
+                <Box>
+                    <Stack direction='row' alignItems='center' justifyContent='center' gap={5} py={20} position='relative'>
+
+                        <Box className='bg' width='100%' height='100%' style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original/${movieDetails.backdrop_path})` }} />
+
                         <Card sx={{ width: 300, height: 400 }}>
                             <CardMedia image={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`} sx={{ height: '100%' }}>
                             </CardMedia>
@@ -88,8 +89,9 @@ const MovieDetails = () => {
                         </Stack>
                     </Stack >
                 </Box >
-
-                <SimilarMovies id={id} />
+                <Box sx={{ backgroundColor: '#191919' }}>
+                    <SimilarMovies id={id} />
+                </Box>
 
                 <Footer />
             </Box >

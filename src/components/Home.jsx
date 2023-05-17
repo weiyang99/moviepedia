@@ -32,6 +32,7 @@ const Home = () => {
             alignItems='center'
             justifyContent='center'
             p='0 8%'
+            sx={{ backgroundColor: '#191919' }}
         >
             <Menu />
 

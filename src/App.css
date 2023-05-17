@@ -106,4 +106,12 @@ body {
 
 .button:hover {
   color: #fff;
+}
+
+.bg {
+  z-index: -1;
+  position: absolute;
+  background-position: center;
+  background-size: cover;
+  filter: brightness(25%);
 }/*# sourceMappingURL=App.css.map */

@@ -122,3 +122,11 @@ body {
     // border-radius: 2em;
     // width: fit-content;
 }
+
+.bg {
+    z-index: -1;
+    position: absolute;
+    background-position: center;
+    background-size: cover;
+    filter: brightness(25%);
+}
