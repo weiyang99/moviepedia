@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Box, IconButton, Typography, Stack, Pagination } from '@mui/material'
-import { Link, useParams } from 'react-router-dom'
-import { ArrowBack, Movie } from '@mui/icons-material'
+import { Link, useLocation, useParams, useSearchParams } from 'react-router-dom'
+import { Movie } from '@mui/icons-material'
 
 import Movies from './Movies'
 import { fetchFromAPI } from './fetchFromAPI'
@@ -13,28 +13,33 @@ import Menu from './Menu'
 const SearchFeed = () => {
     const { searchTerm } = useParams()
     const [movies, setMovies] = useState([])
-    const [pageNumber, setPageNumber] = useState(1)
+    // const [pageNumber, setPageNumber] = useState(1)
     const [totalPages, setTotalPages] = useState()
+    const [searchParams, setSearchParams] = useSearchParams();
+
+    const location = useLocation()
+    const pageN = parseInt(location.search.substring(6))
 
     const handleChange = (e, p) => {
         e.preventDefault()
-        setPageNumber(p)
+        setSearchParams({ page: p })
     }
 
-    const handlePage = (e) => {
-        e.preventDefault()
-        if (pageNumber > 1) { setPageNumber(pageNumber - 1) }
-    }
 
     useEffect(() => {
-        fetchFromAPI(`search/movie?api_key=${REACT_APP_API_KEY}&query=${searchTerm}&language=en-US&page=${pageNumber}`)
+        fetchFromAPI(`search/movie?api_key=${REACT_APP_API_KEY}&query=${searchTerm}&language=en-US&page=${pageN}`)
             .then((data) => setMovies(data.results));
 
-        fetchFromAPI(`search/movie?api_key=${REACT_APP_API_KEY}&query=${searchTerm}&language=en-US&page=${pageNumber}`)
+        fetchFromAPI(`search/movie?api_key=${REACT_APP_API_KEY}&query=${searchTerm}&language=en-US&page=${pageN}`)
             .then((data) => setTotalPages(data.total_pages));
 
+        // setPageNumber(pageN)
         window.scrollTo(0, 0)
-    }, [searchTerm, pageNumber])
+    }, [searchTerm, pageN])
+
+    useEffect(() => {
+        setSearchParams({ page: 1 })
+    }, [])
 
     return (
         <>
@@ -42,13 +47,13 @@ const SearchFeed = () => {
 
             <Box>
                 <Stack className='fix' direction='row' alignItems='center' justifyContent='center' pt={2.5} bgcolor='#191919'>
-                    <IconButton type='button' onClick={handlePage} sx={{ p: '10px', color: 'gold' }}>
-                        <ArrowBack fontSize='large' />
-                    </IconButton>
                     <Link to='/'>
                         <IconButton type='submit' sx={{ p: '10px', color: 'darkOrange' }}>
                             <Movie fontSize='large' />
                         </IconButton>
+                    </Link>
+                    <Link to='/' style={{ textDecoration: 'none' }}>
+                        <Typography color='gold' variant='h4' fontWeight='bold' mr={3}>Moviepedia</Typography>
                     </Link>
                     <SearchBar />
                 </Stack>
@@ -71,7 +76,7 @@ const SearchFeed = () => {
                         mb={10}
                         sx={{ color: 'white', borderLeft: '7px solid gold' }}
                     >
-                        Page: <span style={{ color: 'gold' }}>{pageNumber}</span>
+                        Page: <span style={{ color: 'gold' }}>{pageN}</span>
                     </Typography>
 
                     <Movies movies={movies} />
@@ -79,6 +84,7 @@ const SearchFeed = () => {
                     <Pagination
                         count={totalPages}
                         onChange={handleChange}
+                        page={pageN}
                         color='primary'
                         sx={{ margin: 'auto', alignItems: 'center', width: 'fit-content', backgroundColor: 'darkGrey', marginTop: '5em', borderRadius: '2em' }}
                     />

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Typography, Box, Stack, IconButton, CardMedia, Card } from '@mui/material'
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { REACT_APP_API_KEY } from '../config';
 import { fetchFromAPI } from './fetchFromAPI';
-import { Movie, ArrowBack, KeyboardDoubleArrowUp } from '@mui/icons-material';
+import { Movie, KeyboardDoubleArrowUp } from '@mui/icons-material';
 import SearchBar from './SearchBar';
 import Footer from './Footer';
 import Menu from './Menu';
@@ -11,7 +11,6 @@ import Movies from './Movies';
 
 const CastDetails = () => {
     const { id } = useParams()
-    const navigate = useNavigate()
     const [castDetails, setCastDetails] = useState([])
     const [movies, setMovies] = useState([])
 
@@ -34,13 +33,13 @@ const CastDetails = () => {
                 sx={{ flex: 2, background: '#191919' }}
             >
                 <Stack className='fix' direction='row' alignItems='center' justifyContent='center' pt={2.5} mt='-1em' bgcolor='#191919'>
-                    <IconButton type='button' onClick={() => navigate(-1)} sx={{ p: '10px', color: 'gold' }}>
-                        <ArrowBack fontSize='large' />
-                    </IconButton>
                     <Link to='/'>
                         <IconButton type='submit' sx={{ p: '10px', color: 'darkOrange' }}>
                             <Movie fontSize='large' />
                         </IconButton>
+                    </Link>
+                    <Link to='/' style={{ textDecoration: 'none' }}>
+                        <Typography color='gold' variant='h4' fontWeight='bold' mr={3}>Moviepedia</Typography>
                     </Link>
                     <SearchBar />
                 </Stack>

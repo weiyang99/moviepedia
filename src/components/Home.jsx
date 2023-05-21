@@ -7,6 +7,7 @@ import Movies from './Movies'
 import SearchBar from './SearchBar'
 import Menu from './Menu';
 import { KeyboardDoubleArrowUp, Movie } from '@mui/icons-material'
+import { Link } from 'react-router-dom'
 
 // change page
 
@@ -37,13 +38,13 @@ const Home = () => {
         >
             <Menu />
 
-            <Stack className='fix' direction='row' alignItems='center' justifyContent='center' pt={2.5} pb={2.5} top={0} sx={{ backgroundColor: '#191919' }}>
+            <Stack className='fix' direction='row' alignItems='center' justifyContent='center' pt={2.5} top={0} sx={{ backgroundColor: '#191919' }}>
                 <IconButton sx={{ p: '10px', color: 'darkOrange' }}>
                     <Movie fontSize='large' />
                 </IconButton>
-
-                <Typography color='gold' variant='h4' fontWeight='bold' mr={3}>Moviepedia</Typography>
-
+                <Link to='/' style={{ textDecoration: 'none' }}>
+                    <Typography color='gold' variant='h4' fontWeight='bold' mr={3}>Moviepedia</Typography>
+                </Link>
                 <SearchBar />
             </Stack>
 
