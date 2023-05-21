@@ -3,7 +3,7 @@ import { Typography, Box, Stack, IconButton, CardMedia, Card } from '@mui/materi
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { REACT_APP_API_KEY } from '../config';
 import { fetchFromAPI } from './fetchFromAPI';
-import { Movie, ArrowBack } from '@mui/icons-material';
+import { Movie, ArrowBack, KeyboardDoubleArrowUp } from '@mui/icons-material';
 import SearchBar from './SearchBar';
 import Footer from './Footer';
 import Menu from './Menu';
@@ -30,10 +30,10 @@ const CastDetails = () => {
         <>
             <Menu />
             <Box
-                p={2}
+                pt={2}
                 sx={{ flex: 2, background: '#191919' }}
             >
-                <Stack direction='row' alignItems='center' justifyContent='center' pt={0.5}>
+                <Stack className='fix' direction='row' alignItems='center' justifyContent='center' pt={2.5} mt='-1em' bgcolor='#191919'>
                     <IconButton type='button' onClick={() => navigate(-1)} sx={{ p: '10px', color: 'gold' }}>
                         <ArrowBack fontSize='large' />
                     </IconButton>
@@ -45,7 +45,7 @@ const CastDetails = () => {
                     <SearchBar />
                 </Stack>
 
-                <Box mt={5} sx={{ padding: '0 15%' }}>
+                <Box mt={5} sx={{ padding: '10% 15% 0 15%' }}>
                     <Stack direction='row' alignItems='center' justifyContent='center' gap={5}>
                         <Card sx={{ width: 300, height: 400 }}>
                             <CardMedia image={`https://image.tmdb.org/t/p/w500${castDetails.profile_path}`} sx={{ height: '100%' }}>
@@ -79,6 +79,10 @@ const CastDetails = () => {
                     </Typography>
                     <Movies movies={movies} />
                 </Box>
+
+                <IconButton type='button' onClick={() => window.scrollTo(0, 0)}>
+                    <KeyboardDoubleArrowUp fontSize='large' sx={{ position: 'fixed', bottom: '5%', right: '5%', backgroundColor: 'gold', borderRadius: '50%', color: 'black', p: '0.2em' }} />
+                </IconButton>
 
                 <Footer />
             </Box >

@@ -36,11 +36,11 @@ const Review = () => {
         <>
             <Menu />
             <Box
-                p={2}
-                sx={{ flex: 2, height: reviews.length <= 1 ? '100vh' : 'fit-content', backgroundColor: '#191919' }}
+                pt={2}
+                sx={{ height: reviews.length <= 1 ? '100vh' : 'fit-content', backgroundColor: '#191919' }}
             >
-                <Stack direction='row' alignItems='center' justifyContent='center' pt={0.5}>
-                    <IconButton type='button' onClick={() => navigate(-1)} sx={{ p: '10px', color: 'gold' }}>
+                <Stack className='fix' direction='row' alignItems='center' justifyContent='center' pt={2.5} mt='-1em' sx={{ backgroundColor: '#191919' }}>
+                    <IconButton type='button' onClick={() => { navigate(-1) }} sx={{ p: '10px', color: 'gold' }}>
                         <ArrowBack fontSize='large' />
                     </IconButton>
                     <Link to='/'>
@@ -51,7 +51,7 @@ const Review = () => {
                     <SearchBar />
                 </Stack>
 
-                <Stack direction='column' justifyContent='center' gap={5} p='0 15%' mt={5}>
+                <Stack direction='column' justifyContent='center' gap={5} p='10% 15% 0 15%' mt={5}>
                     <ReviewContent reviews={reviews} />
                 </Stack>
 

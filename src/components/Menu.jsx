@@ -26,7 +26,7 @@ const Menu = () => {
     return (
         <>
             <Box className='menu'>
-                <CancelIcon type='button' onClick={handleClick} fontSize='inherit' sx={{ color: 'white', position: 'absolute', top: '14%', left: '13%', fontSize: '3rem', cursor: 'pointer' }} />
+                <CancelIcon type='button' onClick={handleClick} fontSize='inherit' sx={{ color: 'white', position: 'absolute', top: '10%', left: '13%', fontSize: '3rem', cursor: 'pointer' }} />
                 <Stack direction='row' justifyContent='center' alignItems='center' gap={5} flexWrap='wrap' p='10% 15%'>
                     {genres.map((item, idx) => (
                         <Link onClick={handleClick} key={idx} to={`/genre/${item.id}/${item.name}`} style={{ textDecoration: 'none' }}>
@@ -36,7 +36,7 @@ const Menu = () => {
                 </Stack>
             </Box>
 
-            <ListIcon type='button' onClick={handleClick} fontSize='inherit' sx={{ color: 'white', position: 'absolute', top: '7%', left: '13%', fontSize: '3rem', cursor: 'pointer' }} />
+            <ListIcon type='button' onClick={handleClick} fontSize='inherit' sx={{ color: 'white', position: 'fixed', top: '4.8%', left: '13%', fontSize: '3rem', cursor: 'pointer', zIndex: '9' }} />
         </>
     )
 }

@@ -34,10 +34,9 @@ const SearchFeed = () => {
             <Menu />
 
             <Box
-                p='0 8%'
                 sx={{ flex: 2, height: movies.length < 8 ? '100vh' : 'fit-content', backgroundColor: '#191919' }}
             >
-                <Stack direction='row' alignItems='center' justifyContent='center' pt={2.5}>
+                <Stack className='fix' direction='row' alignItems='center' justifyContent='center' pt={2.5} bgcolor='#191919'>
                     <Link to='/'>
                         <IconButton type='submit' sx={{ p: '10px', color: 'darkOrange' }}>
                             <Movie fontSize='large' />
@@ -45,26 +44,29 @@ const SearchFeed = () => {
                     </Link>
                     <SearchBar />
                 </Stack>
-                <Typography
-                    variant='h4'
-                    fontWeight='bold'
-                    mb={10}
-                    pl={2}
-                    sx={{ color: 'white', borderLeft: '7px solid gold' }}
-                >
-                    Search Results for: <span style={{ color: 'gold' }}>{searchTerm}</span>
-                </Typography>
 
-                <Movies movies={movies} />
+                <Box p='10% 8% 0 8%'>
+                    <Typography
+                        variant='h4'
+                        fontWeight='bold'
+                        mb={10}
+                        pl={2}
+                        sx={{ color: 'white', borderLeft: '7px solid gold' }}
+                    >
+                        Search Results for: <span style={{ color: 'gold' }}>{searchTerm}</span>
+                    </Typography>
 
-                <Pagination
-                    count={totalPages}
-                    onChange={handleChange}
-                    color='primary'
-                    sx={{ margin: 'auto', alignItems: 'center', width: 'fit-content', backgroundColor: 'darkGrey', marginTop: '5em', borderRadius: '2em' }}
-                />
+                    <Movies movies={movies} />
 
-                <Footer />
+                    <Pagination
+                        count={totalPages}
+                        onChange={handleChange}
+                        color='primary'
+                        sx={{ margin: 'auto', alignItems: 'center', width: 'fit-content', backgroundColor: 'darkGrey', marginTop: '5em', borderRadius: '2em' }}
+                    />
+
+                    <Footer />
+                </Box>
             </Box >
         </>
     )

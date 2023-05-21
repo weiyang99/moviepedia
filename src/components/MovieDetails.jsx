@@ -31,8 +31,8 @@ const MovieDetails = () => {
             <Menu />
 
             <Box>
-                <Stack direction='row' alignItems='center' justifyContent='center' pt={2.5} sx={{ backgroundColor: '#191919' }}>
-                    <IconButton type='button' onClick={() => navigate(-1)} sx={{ p: '10px', color: 'gold' }}>
+                <Stack className='fix' direction='row' alignItems='center' justifyContent='center' pt={2.5} sx={{ backgroundColor: '#191919' }}>
+                    <IconButton type='button' onClick={() => { navigate(-1) }} sx={{ p: '10px', color: 'gold' }}>
                         <ArrowBack fontSize='large' />
                     </IconButton>
                     <Link to='/'>
@@ -43,7 +43,7 @@ const MovieDetails = () => {
                     <SearchBar />
                 </Stack>
 
-                <Box>
+                <Box pt={10}>
                     <Stack direction='row' alignItems='center' justifyContent='center' gap={5} py={20} position='relative'>
 
                         <Box className='bg' width='100%' height='100%' style={{ backgroundImage: movieDetails.backdrop_path ? `url(https://image.tmdb.org/t/p/original/${movieDetails.backdrop_path})` : '#191919' }} />
