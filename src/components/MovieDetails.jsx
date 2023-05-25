@@ -45,7 +45,7 @@ const MovieDetails = () => {
                 <Box pt={12}>
                     <Stack direction='row' alignItems='center' justifyContent='center' gap={5} py={25} position='relative'>
 
-                        <Box className='bg' width='100%' height='100%' style={{ background: movieDetails.backdrop_path ? `url(https://image.tmdb.org/t/p/original/${movieDetails.backdrop_path})` : '#191919' }} />
+                        <Box className='bg' width='100%' height='100%' style={{ backgroundImage: movieDetails.backdrop_path && `url(https://image.tmdb.org/t/p/original/${movieDetails.backdrop_path})`, backgroundColor: movieDetails.backdrop_path || '#191919' }} />
 
                         <Card sx={{ width: 300, height: 400 }}>
                             <CardMedia image={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`} sx={{ height: '100%' }}>
