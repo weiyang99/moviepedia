@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Menu from './Menu'
 import { Box, FormControl, IconButton, InputLabel, NativeSelect, Pagination, Stack, Typography } from '@mui/material'
 import { Movie } from '@mui/icons-material'
-import { Link, useLocation, useParams, useSearchParams } from 'react-router-dom'
+import { Link, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import SearchBar from './SearchBar'
 import { fetchFromAPI } from './fetchFromAPI'
 import { REACT_APP_API_KEY } from '../config'
@@ -12,11 +12,12 @@ import Footer from './Footer'
 const Genre = () => {
     const { id, genre } = useParams()
     const [movies, setMovies] = useState([])
-    // const [pageNumber, setPageNumber] = useState(1)
+    const [pageNumber, setPageNumber] = useState(1)
     const [totalPages, setTotalPages] = useState()
     const [filter, setFilter] = useState('popularity.desc')
     const [searchParams, setSearchParams] = useSearchParams();
 
+    const navigate = useNavigate()
     const location = useLocation()
     const pageN = parseInt(location.search.substring(6))
 
@@ -31,19 +32,24 @@ const Genre = () => {
     }
 
     useEffect(() => {
-        fetchFromAPI(`discover/movie?api_key=${REACT_APP_API_KEY}&language=en-US&sort_by=${filter}&page=${pageN}&with_genres=${id}`)
+        fetchFromAPI(`discover/movie?api_key=${REACT_APP_API_KEY}&language=en-US&sort_by=${filter}&page=${pageNumber}&with_genres=${id}`)
             .then((data) => setMovies(data.results));
 
-        fetchFromAPI(`discover/movie?api_key=${REACT_APP_API_KEY}&language=en-US&sort_by=${filter}&page=${pageN}&with_genres=${id}`)
+        fetchFromAPI(`discover/movie?api_key=${REACT_APP_API_KEY}&language=en-US&sort_by=${filter}&page=${pageNumber}&with_genres=${id}`)
             .then((data) => setTotalPages(data.total_pages));
 
-        // setPageNumber(pageN)
         window.scrollTo(0, 0)
-    }, [id, pageN, filter])
+        if (!isNaN(pageN)) { setPageNumber(pageN) }
+
+    }, [id, pageNumber, filter, pageN])
 
     useEffect(() => {
         setSearchParams({ page: 1 })
     }, [id, filter])
+
+    useEffect(() => {
+        if (isNaN(pageN)) { navigate(-1) }
+    }, [])
 
     return (
         <>
@@ -83,7 +89,7 @@ const Genre = () => {
                             pl={2}
                             sx={{ color: 'white', borderLeft: '7px solid gold' }}
                         >
-                            Page: <span style={{ color: 'gold' }}>{pageN}</span>
+                            Page: <span style={{ color: 'gold' }}>{pageNumber}</span>
                         </Typography>
 
                         <FormControl autoWidth>
@@ -107,7 +113,7 @@ const Genre = () => {
                     <Pagination
                         count={totalPages}
                         onChange={handleChange}
-                        page={pageN}
+                        page={pageNumber}
                         color='primary'
                         sx={{ margin: 'auto', alignItems: 'center', width: 'fit-content', backgroundColor: 'darkGrey', marginTop: '5em', borderRadius: '2em' }}
                     />
