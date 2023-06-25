@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Box, IconButton, Typography, Stack, Pagination } from '@mui/material'
-import { Link, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom'
+import { Link, useLocation, useParams, useSearchParams } from 'react-router-dom'
 import { Movie } from '@mui/icons-material'
 
 import Movies from './Movies'
@@ -13,11 +13,9 @@ import Menu from './Menu'
 const SearchFeed = () => {
     const { searchTerm } = useParams()
     const [movies, setMovies] = useState([])
-    const [pageNumber, setPageNumber] = useState(1)
     const [totalPages, setTotalPages] = useState()
     const [searchParams, setSearchParams] = useSearchParams();
 
-    const navigate = useNavigate()
     const location = useLocation()
     const pageN = parseInt(location.search.substring(6))
 
@@ -27,21 +25,13 @@ const SearchFeed = () => {
     }
 
     useEffect(() => {
-        fetchFromAPI(`search/movie?api_key=${REACT_APP_API_KEY}&query=${searchTerm}&language=en-US&page=${pageNumber}`)
+        fetchFromAPI(`search/movie?api_key=${REACT_APP_API_KEY}&query=${searchTerm}&language=en-US&page=${pageN}`)
             .then((data) => setMovies(data.results));
 
-        fetchFromAPI(`search/movie?api_key=${REACT_APP_API_KEY}&query=${searchTerm}&language=en-US&page=${pageNumber}`)
+        fetchFromAPI(`search/movie?api_key=${REACT_APP_API_KEY}&query=${searchTerm}&language=en-US&page=${pageN}`)
             .then((data) => setTotalPages(data.total_pages));
 
-        window.scrollTo(0, 0)
-        if (!isNaN(pageN)) { setPageNumber(pageN) }
-
-    }, [searchTerm, pageN, pageNumber])
-
-    useEffect(() => {
-        setSearchParams({ page: 1 })
-        if (isNaN(pageN)) { navigate(-1) }
-    }, [])
+    }, [searchTerm, pageN])
 
     return (
         <>
@@ -78,7 +68,7 @@ const SearchFeed = () => {
                         mb={10}
                         sx={{ color: 'white', borderLeft: '7px solid gold' }}
                     >
-                        Page: <span style={{ color: 'gold' }}>{pageNumber}</span>
+                        Page: <span style={{ color: 'gold' }}>{pageN}</span>
                     </Typography>
 
                     <Movies movies={movies} />
@@ -86,7 +76,7 @@ const SearchFeed = () => {
                     <Pagination
                         count={totalPages}
                         onChange={handleChange}
-                        page={pageNumber}
+                        page={pageN}
                         color='primary'
                         sx={{ margin: 'auto', alignItems: 'center', width: 'fit-content', backgroundColor: 'darkGrey', marginTop: '5em', borderRadius: '2em' }}
                     />
