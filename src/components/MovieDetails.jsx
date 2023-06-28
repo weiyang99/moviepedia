@@ -80,7 +80,7 @@ const MovieDetails = () => {
 
                             </Stack>
 
-                            <Link style={{ textDecoration: 'none', marginTop: '1em' }} to={`/review/${id}/${movieDetails.original_title}`}>
+                            <Link style={{ textDecoration: 'none', marginTop: '1em' }} to={`/review/${id}/${movieDetails.original_title}?page=1`}>
                                 <Typography className='button' variant='p' fontSize='0.9rem' fontWeight='700' color='gold'>
                                     Reviews
                                 </Typography>
