@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { KeyboardDoubleArrowUp, Movie } from '@mui/icons-material'
 import { Box, IconButton, Pagination, Stack, Typography } from '@mui/material'
-import { Link, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom'
+import { Link, useLocation, useParams, useSearchParams } from 'react-router-dom'
 import SearchBar from './SearchBar'
 import { REACT_APP_API_KEY } from '../config'
 import { fetchFromAPI } from './fetchFromAPI'
@@ -12,11 +12,9 @@ import Menu from './Menu'
 const Review = () => {
     const { id } = useParams()
     const [reviews, setReviews] = useState([])
-    const [pageNumber, setPageNumber] = useState(1)
     const [totalPages, setTotalPages] = useState()
     const [searchParams, setSearchParams] = useSearchParams();
 
-    const navigate = useNavigate()
     const location = useLocation()
     const pageN = parseInt(location.search.substring(6))
 
@@ -26,21 +24,15 @@ const Review = () => {
     }
 
     useEffect(() => {
-        fetchFromAPI(`movie/${id}/reviews?api_key=${REACT_APP_API_KEY}&language=en-US&page=${pageNumber}`)
+        fetchFromAPI(`movie/${id}/reviews?api_key=${REACT_APP_API_KEY}&language=en-US&page=${pageN}`)
             .then((data) => setReviews(data.results));
 
-        fetchFromAPI(`movie/${id}/reviews?api_key=${REACT_APP_API_KEY}&language=en-US&page=${pageNumber}`)
+        fetchFromAPI(`movie/${id}/reviews?api_key=${REACT_APP_API_KEY}&language=en-US&page=${pageN}`)
             .then((data) => setTotalPages(data.total_pages));
 
         window.scrollTo(0, 0)
-        if (!isNaN(pageN)) { setPageNumber(pageN) }
 
-    }, [id, pageN, pageNumber]);
-
-    useEffect(() => {
-        setSearchParams({ page: 1 })
-        if (isNaN(pageN)) { navigate(-1) }
-    }, [])
+    }, [id, pageN]);
 
     return (
 
@@ -69,7 +61,7 @@ const Review = () => {
                         pl={2}
                         sx={{ color: 'white', borderLeft: '7px solid gold' }}
                     >
-                        Page: <span style={{ color: 'gold' }}>{pageNumber}</span>
+                        Page: <span style={{ color: 'gold' }}>{pageN}</span>
                     </Typography>
                 </Box>
 
@@ -80,7 +72,7 @@ const Review = () => {
                 <Pagination
                     count={totalPages}
                     onChange={handleChange}
-                    page={pageNumber}
+                    page={pageN}
                     color='primary'
                     sx={{ margin: 'auto', alignItems: 'center', width: 'fit-content', backgroundColor: 'darkGrey', marginTop: '5em', borderRadius: '2em' }}
                 />
