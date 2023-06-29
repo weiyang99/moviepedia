@@ -15,9 +15,9 @@ const Menu = () => {
         menu.classList.toggle('menu-drop')
     };
 
-    window.onscroll = () => {
-        menu.classList.remove('menu-drop');
-    };
+    // window.onscroll = () => {
+    //     menu.classList.remove('menu-drop');
+    // };
 
     useEffect(() => {
         fetchFromAPI(`genre/movie/list?api_key=${REACT_APP_API_KEY}&language=en-US`)

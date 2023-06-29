@@ -30,7 +30,7 @@ const SearchBar = () => {
                     pl: 1.5,
                     py: 0.5,
                     boxShadow: 'none',
-                    width: { xs: 305, sm: 305, xl: 270 }
+                    width: { xs: 310, sm: 305, xl: 270 }
                 }}
             >
                 <input

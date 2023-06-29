@@ -41,7 +41,6 @@ const CastDetails = () => {
                     <Link to='/' style={{ textDecoration: 'none' }}>
                         <Typography color='gold' variant='h4' fontWeight='bold'>Moviepedia</Typography>
                     </Link>
-                    <SearchBar />
                 </Stack>
 
                 <Box mt={{ xs: 15, sm: 10 }} sx={{ padding: '10% 15% 0 15%' }}>

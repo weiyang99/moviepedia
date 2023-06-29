@@ -21,7 +21,7 @@ const MovieDetails = () => {
         fetchFromAPI(`movie/${id}/credits?api_key=${REACT_APP_API_KEY}&language=en-US`)
             .then((data) => setCasts(data.cast))
 
-        // window.scrollTo(0, 0)
+        window.scrollTo(0, 0)
     }, [id]);
 
 
