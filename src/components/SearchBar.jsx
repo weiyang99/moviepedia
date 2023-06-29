@@ -18,17 +18,19 @@ const SearchBar = () => {
     }
 
     return (
-        <Stack direction="row" alignItems="center" justifyContent='center' mt={5} mb={5} sx={{ background: '#191919', top: 0 }}>
+        <Stack direction="row" alignItems="center" justifyContent='center' mt={{ xs: 12, sm: 5 }} sx={{
+            background: '#191919', top: 0,
+        }}>
             <Paper
                 component="form"
                 onSubmit={handleSubmit}
                 sx={{
                     borderRadius: 10,
                     border: '1px solid #e3e3e3',
-                    pl: 2,
-                    pt: 0.5,
+                    pl: 1.5,
+                    py: 0.5,
                     boxShadow: 'none',
-                    width: 400
+                    width: { xs: 305, sm: 305, xl: 270 }
                 }}
             >
                 <input
@@ -38,7 +40,7 @@ const SearchBar = () => {
                     onChange={(e) => setSearchTerm(e.target.value)}
                     style={{ fontSize: '1.1rem' }}
                 />
-                <IconButton type='submit' sx={{ p: '7px', color: 'darkOrange' }}>
+                <IconButton type='submit' sx={{ p: '0px', color: 'darkOrange' }}>
                     <Search />
                 </IconButton>
             </Paper>

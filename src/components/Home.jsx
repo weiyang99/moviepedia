@@ -19,13 +19,13 @@ const Home = () => {
 
     useEffect(() => {
         fetchFromAPI(`trending/movie/week?api_key=${REACT_APP_API_KEY}`)
-            .then((data) => setMoviesT(data.results))
+            .then((data) => setMoviesT(data.results.slice(0, 10)))
 
         fetchFromAPI(`movie/popular?api_key=${REACT_APP_API_KEY}&language=en-US&page=1`)
-            .then((data) => setMoviesP(data.results))
+            .then((data) => setMoviesP(data.results.slice(0, 10)))
 
         fetchFromAPI(`movie/upcoming?api_key=${REACT_APP_API_KEY}&language=en-US&page=1`)
-            .then((data) => setMoviesUC(data.results))
+            .then((data) => setMoviesUC(data.results.slice(0, 10)))
     }, [])
 
     return (
@@ -39,25 +39,26 @@ const Home = () => {
             <Menu />
 
             <Stack className='fix' direction='row' alignItems='center' justifyContent='center' pt={2.5} top={0} sx={{ backgroundColor: '#191919' }}>
-                <IconButton sx={{ p: '10px', color: 'darkOrange' }}>
-                    <Movie fontSize='large' />
-                </IconButton>
-                <Link to='/' style={{ textDecoration: 'none' }}>
-                    <Typography color='gold' variant='h4' fontWeight='bold' mr={3}>Moviepedia</Typography>
+                {/* <Link to='/'>
+                        <IconButton type='submit' sx={{ p: '10px', color: 'darkOrange' }}>
+                            <Movie fontSize='large' />
+                        </IconButton>
+                    </Link> */}
+                <Link to='/' style={{ textDecoration: 'none', textAlign: 'center' }}>
+                    <Typography color='gold' variant='h4' fontWeight='bold' >Moviepedia</Typography>
                 </Link>
-                <SearchBar />
             </Stack>
 
             <Typography
                 variant='h4'
                 fontWeight='bold'
                 mb={5}
-                mt={30}
+                mt={{ xs: 20, md: 25 }}
                 pl={2}
                 pr={2}
-                sx={{ color: 'white', borderLeft: '7px solid gold', borderRight: '7px solid gold' }}
+                sx={{ color: 'white', borderLeft: '7px solid gold', borderRight: '7px solid gold', fontSize: { xs: '1.5rem', md: '2rem' } }}
             >
-                Top 20 Trending
+                Top 10 Trending
             </Typography>
 
             <Movies movies={moviesT} />
@@ -69,9 +70,9 @@ const Home = () => {
                 mt={25}
                 pl={2}
                 pr={2}
-                sx={{ color: 'white', borderLeft: '7px solid gold', borderRight: '7px solid gold' }}
+                sx={{ color: 'white', borderLeft: '7px solid gold', borderRight: '7px solid gold', fontSize: { xs: '1.5rem', md: '2rem' } }}
             >
-                Top 20 Popular
+                Top 10 Popular
             </Typography>
 
             <Movies movies={moviesP} />
@@ -83,15 +84,15 @@ const Home = () => {
                 mt={25}
                 pl={2}
                 pr={2}
-                sx={{ color: 'white', borderLeft: '7px solid gold', borderRight: '7px solid gold' }}
+                sx={{ color: 'white', borderLeft: '7px solid gold', borderRight: '7px solid gold', fontSize: { xs: '1.5rem', md: '2rem' } }}
             >
-                Top 20 Upcoming
+                Top 10 Upcoming
             </Typography>
 
             <Movies movies={moviesUC} />
 
             <IconButton type='button' onClick={() => window.scrollTo(0, 0)}>
-                <KeyboardDoubleArrowUp fontSize='large' sx={{ position: 'fixed', bottom: '5%', right: '5%', backgroundColor: 'gold', borderRadius: '50%', color: 'black', p: '0.2em' }} />
+                <KeyboardDoubleArrowUp fontSize='large' sx={{ position: 'fixed', bottom: '5%', right: '5%', backgroundColor: 'gold', borderRadius: '50%', color: 'black', p: '0.2em', fontSize: { xs: '1.5rem', md: '1.8rem' } }} />
             </IconButton>
 
             <Footer />

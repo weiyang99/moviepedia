@@ -19,6 +19,7 @@ const SimilarMovies = ({ id }) => {
                 fontWeight='bold'
                 mb={5}
                 pl={2}
+                fontSize={{ xs: '1.5rem', lg: '1.8rem' }}
                 sx={{ color: 'white', borderLeft: '7px solid gold' }}
             >
                 Recommendations

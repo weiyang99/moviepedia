@@ -43,22 +43,22 @@ const Review = () => {
                 sx={{ height: reviews.length <= 1 ? '100vh' : 'fit-content', backgroundColor: '#191919' }}
             >
                 <Stack className='fix' direction='row' alignItems='center' justifyContent='center' pt={2.5} mt='-1em' sx={{ backgroundColor: '#191919' }}>
-                    <Link to='/'>
+                    {/* <Link to='/'>
                         <IconButton type='submit' sx={{ p: '10px', color: 'darkOrange' }}>
                             <Movie fontSize='large' />
                         </IconButton>
-                    </Link>
+                    </Link> */}
                     <Link to='/' style={{ textDecoration: 'none' }}>
-                        <Typography color='gold' variant='h4' fontWeight='bold' mr={3}>Moviepedia</Typography>
+                        <Typography color='gold' variant='h4' fontWeight='bold' >Moviepedia</Typography>
                     </Link>
-                    <SearchBar />
                 </Stack>
 
-                <Box p='8% 0 0 15%'>
+                <Box p={{ xs: '30% 8% 0 8%', sm: '17% 8% 0 8%', md: '12% 8% 0 8%' }}>
                     <Typography
                         variant='h4'
                         fontWeight='bold'
                         pl={2}
+                        fontSize={{ xs: '1rem', sm: '1.2rem', md: '1.5rem', lg: '1.8rem' }}
                         sx={{ color: 'white', borderLeft: '7px solid gold' }}
                     >
                         Page: <span style={{ color: 'gold' }}>{pageN}</span>
@@ -74,11 +74,11 @@ const Review = () => {
                     onChange={handleChange}
                     page={pageN}
                     color='primary'
-                    sx={{ margin: 'auto', alignItems: 'center', width: 'fit-content', backgroundColor: 'darkGrey', marginTop: '5em', borderRadius: '2em' }}
+                    sx={{ margin: 'auto', alignItems: 'center', width: 'fit-content', backgroundColor: 'darkGrey', marginTop: '5em', borderRadius: '1em' }}
                 />
 
                 <IconButton type='button' onClick={() => window.scrollTo(0, 0)}>
-                    <KeyboardDoubleArrowUp fontSize='large' sx={{ position: 'fixed', bottom: '5%', right: '5%', backgroundColor: 'gold', borderRadius: '50%', color: 'black', p: '0.2em' }} />
+                    <KeyboardDoubleArrowUp fontSize='large' sx={{ position: 'fixed', bottom: '5%', right: '5%', backgroundColor: 'gold', borderRadius: '50%', color: 'black', p: '0.2em', fontSize: { xs: '1.5rem', md: '1.8rem' } }} />
                 </IconButton>
 
                 <Footer />

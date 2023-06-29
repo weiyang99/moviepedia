@@ -45,19 +45,18 @@ const Genre = () => {
 
             <Box>
                 <Stack className='fix' direction='row' alignItems='center' justifyContent='center' pt={2.5} sx={{ backgroundColor: '#191919' }}>
-                    <Link to='/'>
+                    {/* <Link to='/'>
                         <IconButton type='submit' sx={{ p: '10px', color: 'darkOrange' }}>
                             <Movie fontSize='large' />
                         </IconButton>
-                    </Link>
+                    </Link> */}
                     <Link to='/' style={{ textDecoration: 'none' }}>
-                        <Typography color='gold' variant='h4' fontWeight='bold' mr={3}>Moviepedia</Typography>
+                        <Typography color='gold' variant='h4' fontWeight='bold' >Moviepedia</Typography>
                     </Link>
-                    <SearchBar />
                 </Stack>
 
                 <Box
-                    p='10% 8% 0 8%'
+                    p={{ xs: '30% 8% 0 8%', sm: '20% 8% 0 8%', md: '15% 8% 0 8%' }}
                     sx={{ flex: 2, height: movies.length < 8 ? '100vh' : 'fit-content', backgroundColor: '#191919' }}
                 >
 
@@ -65,23 +64,25 @@ const Genre = () => {
                         variant='h4'
                         fontWeight='bold'
                         pl={2}
+                        fontSize={{ xs: '1rem', sm: '1.2rem', md: '1.5rem', lg: '1.8rem' }}
                         sx={{ color: 'white', borderLeft: '7px solid gold' }}
                     >
                         Genre: <span style={{ color: 'gold' }}>{genre}</span>
                     </Typography>
 
-                    <Stack direction='row' justifyContent='space-between' alignItems='center' mb={10} mt={2}>
+                    <Stack direction='row' justifyContent='space-between' alignItems='center' mb={8}>
                         <Typography
                             variant='h4'
                             fontWeight='bold'
                             pl={2}
+                            fontSize={{ xs: '1rem', sm: '1.2rem', md: '1.5rem', lg: '1.8rem' }}
                             sx={{ color: 'white', borderLeft: '7px solid gold' }}
                         >
                             Page: <span style={{ color: 'gold' }}>{pageN}</span>
                         </Typography>
 
                         <FormControl autoWidth>
-                            <InputLabel variant="standard" sx={{ color: 'orange', fontSize: '1.3rem', fontWeight: 'bold' }}>
+                            <InputLabel variant="standard" sx={{ color: 'orange', fontSize: { xs: '1rem', sm: '1.2rem' }, fontWeight: 'bold' }}>
                                 Sort By:
                             </InputLabel>
                             <NativeSelect
@@ -103,7 +104,7 @@ const Genre = () => {
                         onChange={handleChange}
                         page={pageN}
                         color='primary'
-                        sx={{ margin: 'auto', alignItems: 'center', width: 'fit-content', backgroundColor: 'darkGrey', marginTop: '5em', borderRadius: '2em' }}
+                        sx={{ margin: 'auto', alignItems: 'center', width: 'fit-content', backgroundColor: 'darkGrey', marginTop: '5em', borderRadius: '1em' }}
                     />
 
                     <Footer />

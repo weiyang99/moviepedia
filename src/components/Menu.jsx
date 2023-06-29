@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react'
 import { fetchFromAPI } from './fetchFromAPI';
 import { REACT_APP_API_KEY } from '../config';
 import { Link } from 'react-router-dom';
+import SearchBar from './SearchBar';
 
 const Menu = () => {
     const [genres, setGenres] = useState([])
@@ -25,18 +26,23 @@ const Menu = () => {
 
     return (
         <>
-            <Box className='menu'>
-                <CancelIcon type='button' onClick={handleClick} fontSize='inherit' sx={{ color: 'white', position: 'absolute', top: '10%', left: '13%', fontSize: '3rem', cursor: 'pointer' }} />
-                <Stack direction='row' justifyContent='center' alignItems='center' gap={5} flexWrap='wrap' p='10% 15%'>
+            <Box className='menu' sx={{ height: { xs: '60%', sm: '55%', md: '50%', xl: '45%' } }}>
+                <SearchBar />
+
+                <CancelIcon type='button' onClick={handleClick} fontSize='inherit' sx={{ color: 'white', position: 'absolute', top: '10%', left: { xs: '5%', sm: '13%' }, fontSize: { xs: '1.8rem', sm: '2rem', md: '2.5rem' }, cursor: 'pointer' }} />
+
+                <Stack direction='row' justifyContent='center' alignItems='center' gap={3} flexWrap='wrap' p={{ xs: '10% 10%', md: '5% 20%' }}>
                     {genres.map((item, idx) => (
                         <Link onClick={handleClick} key={idx} to={`/genre/${item.id}/${item.name}?page=1`} style={{ textDecoration: 'none' }}>
-                            <Typography variant='h6' fontWeight='bold' color='white'>{item.name}</Typography>
+                            <Typography variant='h6' fontSize={{ xs: '0.7rem', sm: '0.9rem', xl: '1.2rem', }} fontWeight='bold' color='white'>{item.name}</Typography>
                         </Link>
                     ))}
                 </Stack>
-            </Box>
+            </Box >
 
-            <ListIcon type='button' onClick={handleClick} fontSize='inherit' sx={{ color: 'white', position: 'fixed', top: '4.8%', left: '13%', fontSize: '3rem', cursor: 'pointer', zIndex: '9' }} />
+            <ListIcon type='button' onClick={handleClick} fontSize='inherit' sx={{
+                color: 'white', position: 'fixed', top: '4.8%', left: { xs: '5%', sm: '13%' }, fontSize: { xs: '2.5rem', sm: '2.5rem' }, cursor: 'pointer', zIndex: '9',
+            }} />
         </>
     )
 }
