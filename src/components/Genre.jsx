@@ -88,7 +88,7 @@ const Genre = () => {
                             <NativeSelect
                                 defaultValue={!filter ? 'popularity.desc' : filter}
                                 sx={{ color: 'white' }}
-                                onClick={handleClick}
+                                onChange={handleClick}
                             >
                                 <option style={{ backgroundColor: '#121212' }} value={'popularity.desc'} >Popularity</option>
                                 <option style={{ backgroundColor: '#121212' }} value={'release_date.desc'} >Release Date</option>
