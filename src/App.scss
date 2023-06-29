@@ -84,22 +84,25 @@ body {
 .search-bar {
     border: none;
     outline: none;
+    width: 200px;
+    padding: 5px 20px;
+    border-radius: 20px;
 
-    @include xs {
-        width: 250px;
-    }
+    // @include xs {
+    //     width: 250px;
+    // }
 
-    @include sm {
-        width: 250px;
-    }
+    // @include sm {
+    //     width: 250px;
+    // }
 
-    @include md {
-        width: 275px;
-    }
+    // @include md {
+    //     width: 275px;
+    // }
 
-    @include lg {
-        width: 270px;
-    }
+    // @include lg {
+    //     width: 200px;
+    // }
 }
 
 .card {

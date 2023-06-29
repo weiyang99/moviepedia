@@ -59,26 +59,9 @@ body {
 .search-bar {
   border: none;
   outline: none;
-}
-@media screen and (max-width: 600px) {
-  .search-bar {
-    width: 250px;
-  }
-}
-@media screen and (max-width: 900px) {
-  .search-bar {
-    width: 250px;
-  }
-}
-@media screen and (max-width: 1200px) {
-  .search-bar {
-    width: 275px;
-  }
-}
-@media screen and (max-width: 1536px) {
-  .search-bar {
-    width: 270px;
-  }
+  width: 200px;
+  padding: 5px 20px;
+  border-radius: 20px;
 }
 
 .card:hover {

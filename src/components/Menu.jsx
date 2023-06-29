@@ -31,7 +31,7 @@ const Menu = () => {
 
                 <CancelIcon type='button' onClick={handleClick} fontSize='inherit' sx={{ color: 'white', position: 'absolute', top: '6%', left: { xs: '5%', sm: '13%' }, fontSize: { xs: '1.8rem', sm: '2rem', md: '2.5rem' }, cursor: 'pointer' }} />
 
-                <Stack direction='row' justifyContent='center' alignItems='center' gap={3} flexWrap='wrap' p={{ xs: '10% 10%', md: '5% 20%' }}>
+                <Stack direction='row' justifyContent='center' alignItems='center' gap={3} flexWrap='wrap' p='10%'>
                     {genres.map((item, idx) => (
                         <Link onClick={handleClick} key={idx} to={`/genre/${item.id}/${item.name}?page=1`} style={{ textDecoration: 'none' }}>
                             <Typography variant='h6' fontSize={{ xs: '0.9rem', xl: '1.2rem', }} fontWeight='bold' color='white'>{item.name}</Typography>
