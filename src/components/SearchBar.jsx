@@ -21,30 +21,29 @@ const SearchBar = () => {
         <Stack direction="row" alignItems="center" justifyContent='center' mt={{ xs: 12, sm: 5 }} sx={{
             top: 0,
         }}>
-            {/* <Paper
+            <Paper
                 component="form"
                 onSubmit={handleSubmit}
                 sx={{
                     borderRadius: 10,
                     border: '1px solid #e3e3e3',
-                    pl: 1.5,
-                    py: 0.5,
+                    // pl: 1.5,
+                    // py: 0.5,
                     boxShadow: 'none',
-                    width: { xs: 310, sm: 305, xl: 270 }
+                    width: 250
                 }}
-            > */}
-            <input
-                className='search-bar'
-                placeholder='Search Movies...'
-                value={searchTerm}
-                onSubmit={handleSubmit}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                style={{ fontSize: '1.1rem' }}
-            />
-            <IconButton type='submit' sx={{ p: '7px', color: 'darkOrange' }}>
-                <Search />
-            </IconButton>
-            {/* </Paper> */}
+            >
+                <input
+                    className='search-bar'
+                    placeholder='Search Movies...'
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    style={{ fontSize: '1.1rem' }}
+                />
+                <IconButton type='submit' sx={{ p: '0px', color: 'darkOrange' }}>
+                    <Search />
+                </IconButton>
+            </Paper>
         </Stack >
     )
 }
