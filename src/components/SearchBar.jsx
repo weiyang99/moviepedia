@@ -19,7 +19,7 @@ const SearchBar = () => {
 
     return (
         <Stack direction="row" alignItems="center" justifyContent='center' mt={{ xs: 12, sm: 5 }} sx={{
-            background: '#191919', top: 0,
+            top: 0,
         }}>
             <Paper
                 component="form"
