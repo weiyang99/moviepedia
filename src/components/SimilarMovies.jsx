@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { Box, Typography } from '@mui/material'
-import { REACT_APP_API_KEY } from '../config'
 import { fetchFromAPI } from './fetchFromAPI'
 import Movies from './Movies'
 
@@ -8,7 +7,7 @@ const SimilarMovies = ({ id }) => {
     const [similarMovies, setSimilarMovies] = useState([])
 
     useEffect(() => {
-        fetchFromAPI(`movie/${id}/recommendations?api_key=${REACT_APP_API_KEY}&language=en-US&page=1`)
+        fetchFromAPI(`movie/${id}/recommendations?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`)
             .then((data) => setSimilarMovies(data.results))
     }, [id])
 

@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Typography, Box, Stack, IconButton, CardMedia, Card } from '@mui/material'
 import { Link, useParams } from 'react-router-dom';
-import { REACT_APP_API_KEY } from '../config';
 import { fetchFromAPI } from './fetchFromAPI';
 import { Movie, KeyboardDoubleArrowUp } from '@mui/icons-material';
-import SearchBar from './SearchBar';
+// import SearchBar from './SearchBar';
 import Footer from './Footer';
 import Menu from './Menu';
 import Movies from './Movies';
@@ -15,10 +14,10 @@ const CastDetails = () => {
     const [movies, setMovies] = useState([])
 
     useEffect(() => {
-        fetchFromAPI(`person/${id}/movie_credits?api_key=${REACT_APP_API_KEY}&language=en-US`)
+        fetchFromAPI(`person/${id}/movie_credits?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
             .then((data) => setMovies(data.cast))
 
-        fetchFromAPI(`person/${id}?api_key=${REACT_APP_API_KEY}&language=en-US`)
+        fetchFromAPI(`person/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
             .then((data) => setCastDetails(data))
 
         window.scrollTo(0, 0)

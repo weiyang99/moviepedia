@@ -3,7 +3,6 @@ import ListIcon from '@mui/icons-material/List';
 import CancelIcon from '@mui/icons-material/Cancel';
 import React, { useEffect, useState } from 'react'
 import { fetchFromAPI } from './fetchFromAPI';
-import { REACT_APP_API_KEY } from '../config';
 import { Link } from 'react-router-dom';
 import SearchBar from './SearchBar';
 
@@ -20,7 +19,7 @@ const Menu = () => {
     // };
 
     useEffect(() => {
-        fetchFromAPI(`genre/movie/list?api_key=${REACT_APP_API_KEY}&language=en-US`)
+        fetchFromAPI(`genre/movie/list?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
             .then((data) => setGenres(data.genres))
     }, [])
 

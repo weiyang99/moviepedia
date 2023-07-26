@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import Menu from './Menu'
 import { Box, FormControl, IconButton, InputLabel, NativeSelect, Pagination, Stack, Typography } from '@mui/material'
-import { Movie } from '@mui/icons-material'
+// import { Movie } from '@mui/icons-material'
 import { Link, useLocation, useParams, useSearchParams } from 'react-router-dom'
-import SearchBar from './SearchBar'
+// import SearchBar from './SearchBar'
 import { fetchFromAPI } from './fetchFromAPI'
-import { REACT_APP_API_KEY } from '../config'
 import Movies from './Movies'
 import Footer from './Footer'
 
@@ -31,10 +30,10 @@ const Genre = () => {
     }
 
     useEffect(() => {
-        fetchFromAPI(`discover/movie?api_key=${REACT_APP_API_KEY}&language=en-US&sort_by=${!filter ? 'popularity.desc' : filter}&page=${pageN}&with_genres=${id}`)
+        fetchFromAPI(`discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=${!filter ? 'popularity.desc' : filter}&page=${pageN}&with_genres=${id}`)
             .then((data) => setMovies(data.results));
 
-        fetchFromAPI(`discover/movie?api_key=${REACT_APP_API_KEY}&language=en-US&sort_by=${!filter ? 'popularity.desc' : filter}&page=${pageN}&with_genres=${id}`)
+        fetchFromAPI(`discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=${!filter ? 'popularity.desc' : filter}&page=${pageN}&with_genres=${id}`)
             .then((data) => setTotalPages(data.total_pages));
 
     }, [id, filter, pageN])

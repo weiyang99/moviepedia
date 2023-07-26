@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { KeyboardDoubleArrowUp, Movie } from '@mui/icons-material'
 import { Box, IconButton, Pagination, Stack, Typography } from '@mui/material'
 import { Link, useLocation, useParams, useSearchParams } from 'react-router-dom'
-import SearchBar from './SearchBar'
-import { REACT_APP_API_KEY } from '../config'
+// import SearchBar from './SearchBar'
 import { fetchFromAPI } from './fetchFromAPI'
 import ReviewContent from './ReviewContent'
 import Footer from './Footer'
@@ -24,10 +23,10 @@ const Review = () => {
     }
 
     useEffect(() => {
-        fetchFromAPI(`movie/${id}/reviews?api_key=${REACT_APP_API_KEY}&language=en-US&page=${pageN}`)
+        fetchFromAPI(`movie/${id}/reviews?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=${pageN}`)
             .then((data) => setReviews(data.results));
 
-        fetchFromAPI(`movie/${id}/reviews?api_key=${REACT_APP_API_KEY}&language=en-US&page=${pageN}`)
+        fetchFromAPI(`movie/${id}/reviews?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=${pageN}`)
             .then((data) => setTotalPages(data.total_pages));
 
         window.scrollTo(0, 0)

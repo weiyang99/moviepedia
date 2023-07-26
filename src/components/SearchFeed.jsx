@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react'
 import { Box, IconButton, Typography, Stack, Pagination } from '@mui/material'
 import { Link, useLocation, useParams, useSearchParams } from 'react-router-dom'
-import { Movie } from '@mui/icons-material'
+// import { Movie } from '@mui/icons-material'
 
 import Movies from './Movies'
 import { fetchFromAPI } from './fetchFromAPI'
-import { REACT_APP_API_KEY } from '../config'
-import SearchBar from './SearchBar'
+// import SearchBar from './SearchBar'
 import Footer from './Footer'
 import Menu from './Menu'
 
@@ -25,10 +24,10 @@ const SearchFeed = () => {
     }
 
     useEffect(() => {
-        fetchFromAPI(`search/movie?api_key=${REACT_APP_API_KEY}&query=${searchTerm}&language=en-US&page=${pageN}`)
+        fetchFromAPI(`search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${searchTerm}&language=en-US&page=${pageN}`)
             .then((data) => setMovies(data.results));
 
-        fetchFromAPI(`search/movie?api_key=${REACT_APP_API_KEY}&query=${searchTerm}&language=en-US&page=${pageN}`)
+        fetchFromAPI(`search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${searchTerm}&language=en-US&page=${pageN}`)
             .then((data) => setTotalPages(data.total_pages));
 
     }, [searchTerm, pageN])

@@ -1,15 +1,12 @@
 import { IconButton, Stack, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
-import { REACT_APP_API_KEY } from '../config'
 import { fetchFromAPI } from './fetchFromAPI'
 import Footer from './Footer'
 import Movies from './Movies'
-import SearchBar from './SearchBar'
+// import SearchBar from './SearchBar'
 import Menu from './Menu';
 import { KeyboardDoubleArrowUp, Movie } from '@mui/icons-material'
 import { Link } from 'react-router-dom'
-
-// change page
 
 
 const Home = () => {
@@ -18,13 +15,13 @@ const Home = () => {
     const [moviesUC, setMoviesUC] = useState([])
 
     useEffect(() => {
-        fetchFromAPI(`trending/movie/week?api_key=${REACT_APP_API_KEY}`)
+        fetchFromAPI(`trending/movie/week?api_key=${process.env.REACT_APP_API_KEY}`)
             .then((data) => setMoviesT(data.results.slice(0, 10)))
 
-        fetchFromAPI(`movie/popular?api_key=${REACT_APP_API_KEY}&language=en-US&page=1`)
+        fetchFromAPI(`movie/popular?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`)
             .then((data) => setMoviesP(data.results.slice(0, 10)))
 
-        fetchFromAPI(`movie/upcoming?api_key=${REACT_APP_API_KEY}&language=en-US&page=1`)
+        fetchFromAPI(`movie/upcoming?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`)
             .then((data) => setMoviesUC(data.results.slice(0, 10)))
     }, [])
 

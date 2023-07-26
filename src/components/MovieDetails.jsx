@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Typography, Box, Stack, IconButton, CardMedia, Card } from '@mui/material'
 import { Link, useParams } from 'react-router-dom';
-import { REACT_APP_API_KEY } from '../config';
 import { fetchFromAPI } from './fetchFromAPI';
-import { Movie } from '@mui/icons-material';
-import SearchBar from './SearchBar';
+// import { Movie } from '@mui/icons-material';
+// import SearchBar from './SearchBar';
 import Footer from './Footer';
 import SimilarMovies from './SimilarMovies';
 import Menu from './Menu';
@@ -15,10 +14,10 @@ const MovieDetails = () => {
     const [casts, setCasts] = useState([])
 
     useEffect(() => {
-        fetchFromAPI(`movie/${id}?api_key=${REACT_APP_API_KEY}&language=en-US`)
+        fetchFromAPI(`movie/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
             .then((data) => setMovieDetails(data))
 
-        fetchFromAPI(`movie/${id}/credits?api_key=${REACT_APP_API_KEY}&language=en-US`)
+        fetchFromAPI(`movie/${id}/credits?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
             .then((data) => setCasts(data.cast))
 
         window.scrollTo(0, 0)
