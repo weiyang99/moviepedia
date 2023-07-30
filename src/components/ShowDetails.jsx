@@ -45,7 +45,8 @@ const ShowDetails = () => {
           direction="row"
           alignItems="center"
           justifyContent="center"
-          pt={{ xs: 4, md: 5, lg: 2.5 }}
+          // pt={{ xs: 4, md: 5, lg: 2.5 }}
+          pt={2}
           sx={{ backgroundColor: "#191919" }}
         >
           <Link to="/" style={{ textDecoration: "none" }}>
@@ -61,7 +62,7 @@ const ShowDetails = () => {
           </Link>
         </Stack>
 
-        <Box pt={12}>
+        <Box pt={10}>
           <Stack
             direction={{ md: "row" }}
             alignItems="center"
@@ -100,7 +101,7 @@ const ShowDetails = () => {
                 fontWeight="bold"
                 color="white"
               >
-                {showDetails.original_title}
+                {isTv ? showDetails.name : showDetails.original_title}
               </Typography>
 
               <Typography
@@ -109,7 +110,7 @@ const ShowDetails = () => {
                 fontSize="0.85rem"
                 mt={2}
               >
-                {showDetails.runtime} mins
+                {isTv ? showDetails.episode_run_time : showDetails.runtime} mins
               </Typography>
 
               <Typography
@@ -141,7 +142,7 @@ const ShowDetails = () => {
                     mt={2}
                   >
                     Released:{" "}
-                    <span className="details">{showDetails.release_date}</span>
+                    <span className="details">{isTv ? showDetails.first_air_date : showDetails.release_date}</span>
                   </Typography>
 
                   <Typography
@@ -188,7 +189,7 @@ const ShowDetails = () => {
                     mt={2}
                   >
                     Duration:{" "}
-                    <span className="details">{showDetails.runtime} mins</span>
+                    <span className="details">{isTv ? showDetails.episode_run_time : showDetails.runtime} mins</span>
                   </Typography>
 
                   <Typography

@@ -13,6 +13,7 @@ const Header = () => {
       alignItems="center"
       justifyContent="center"
       pt={2.5}
+      ml={8}
       top={0}
       sx={{ backgroundColor: "#191919" }}
     >
