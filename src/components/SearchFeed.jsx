@@ -103,7 +103,7 @@ const SearchFeed = () => {
             Page: <span style={{ color: "gold" }}>{pageN}</span>
           </Typography>
 
-          <Shows showss={shows} />
+          <Shows shows={shows} />
 
           <Pagination
             count={totalPages}

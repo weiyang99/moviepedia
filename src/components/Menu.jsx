@@ -27,7 +27,7 @@ const Menu = () => {
         `genre/tv/list?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
       ).then((data) => setGenres(data.genres));
     }
-  }, []);
+  }, [isTv]);
 
   return (
     <>
