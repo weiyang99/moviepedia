@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Card, CardMedia } from "@mui/material";
 import { Link } from "react-router-dom";
+import { Type } from "./Context";
 
 const ShowCard = ({ show }) => {
+  const { isTv, setIsTv } = useContext(Type);
+
   return (
-    <Link to={`/show/${show.id}/${show.original_title}`}>
+    <Link to={`/show/${show.id}/${!isTv ? show.original_title : show.name}`}>
       <Card
         className="card"
         sx={{

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Paper, IconButton, Stack } from "@mui/material";
-import { Search } from "@mui/icons-material";
+import { Paper, Stack } from "@mui/material";
 
 const SearchBar = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -44,9 +43,6 @@ const SearchBar = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
           style={{ fontSize: "1.1rem" }}
         />
-        <IconButton type="submit" sx={{ p: "0px", color: "darkOrange" }}>
-          <Search />
-        </IconButton>
       </Paper>
     </Stack>
   );

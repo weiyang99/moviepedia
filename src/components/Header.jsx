@@ -13,17 +13,16 @@ const Header = () => {
       alignItems="center"
       justifyContent="center"
       pt={2.5}
-      ml={8}
       top={0}
       sx={{ backgroundColor: "#191919" }}
     >
       <Link to="/" style={{ textDecoration: "none", textAlign: "center" }}>
         {isTv ? (
-          <Typography color="gold" variant="h4" fontWeight="bold">
+          <Typography ml={8} color="gold" variant="h4" fontWeight="bold">
             TVpedia
           </Typography>
         ) : (
-          <Typography color="gold" variant="h4" fontWeight="bold">
+          <Typography ml={8} color="gold" variant="h4" fontWeight="bold">
             Moviepedia
           </Typography>
         )}

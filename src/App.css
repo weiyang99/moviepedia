@@ -60,7 +60,7 @@ body {
   border: none;
   outline: none;
   width: 200px;
-  padding: 5px 10px;
+  padding: 5px 20px;
   border-radius: 20px;
 }
 
@@ -115,6 +115,7 @@ body {
   border-radius: 2em;
   margin-left: 1em;
   cursor: pointer;
+  animation: popping 1s infinite ease;
 }
 .btn:hover {
   background-color: gold;
@@ -126,4 +127,16 @@ body {
   background-position: center;
   background-size: cover;
   filter: brightness(25%);
+}
+
+@keyframes popping {
+  from {
+    transform: scale(1);
+    background-color: gray;
+  }
+  to {
+    transform: scale(1.1);
+    background-color: rgb(255, 141, 141);
+    box-shadow: 0 2.8px 10px rgba(255, 255, 255, 0.514);
+  }
 }/*# sourceMappingURL=App.css.map */

@@ -104,14 +104,27 @@ const ShowDetails = () => {
                 {isTv ? showDetails.name : showDetails.original_title}
               </Typography>
 
-              <Typography
-                variant="p"
-                color="lightgrey"
-                fontSize="0.85rem"
-                mt={2}
-              >
-                {isTv ? showDetails.episode_run_time : showDetails.runtime} mins
-              </Typography>
+              {isTv
+                ?
+                <Typography
+                  variant="p"
+                  color="lightgrey"
+                  fontSize="0.85rem"
+                  mt={2}
+                >
+                  <p><span style={{ color: "white", fontWeight: '700' }}>No. of Seasons:</span> {showDetails.number_of_seasons}</p>
+                  <p><span style={{ color: "white", fontWeight: '700' }}>Total Episodes:</span> {showDetails.number_of_episodes}</p>
+                </Typography>
+                :
+                <Typography
+                  variant="p"
+                  color="lightgrey"
+                  fontSize="0.85rem"
+                  mt={2}
+                >
+                  {showDetails.runtime} mins
+                </Typography>
+              }
 
               <Typography
                 variant="p"
@@ -142,7 +155,11 @@ const ShowDetails = () => {
                     mt={2}
                   >
                     Released:{" "}
-                    <span className="details">{isTv ? showDetails.first_air_date : showDetails.release_date}</span>
+                    {
+                      isTv
+                        ? <span className="details">{showDetails.first_air_date} - {showDetails.last_air_date}</span>
+                        : <span className="details">{showDetails.release_date}</span>
+                    }
                   </Typography>
 
                   <Typography
@@ -189,7 +206,12 @@ const ShowDetails = () => {
                     mt={2}
                   >
                     Duration:{" "}
-                    <span className="details">{isTv ? showDetails.episode_run_time : showDetails.runtime} mins</span>
+                    {isTv
+                      ?
+                      <span className="details">{showDetails.episode_run_time} mins / episode </span>
+                      :
+                      <span className="details">{showDetails.runtime} mins</span>
+                    }
                   </Typography>
 
                   <Typography
