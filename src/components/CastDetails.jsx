@@ -12,7 +12,7 @@ import { fetchFromAPI } from "./fetchFromAPI";
 import { KeyboardDoubleArrowUp } from "@mui/icons-material";
 import Footer from "./Footer";
 import Menu from "./Menu";
-import Shows from "./Shows";
+import Result from "./Result";
 import { Type } from "./Context";
 
 const CastDetails = () => {
@@ -154,7 +154,7 @@ const CastDetails = () => {
           >
             Acted in
           </Typography>
-          <Shows shows={shows} />
+          <Result res={shows} />
         </Box>
 
         <IconButton type="button" onClick={() => window.scrollTo(0, 0)}>

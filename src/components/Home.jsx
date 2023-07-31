@@ -2,7 +2,7 @@ import { IconButton, Stack, Typography } from "@mui/material";
 import React, { useContext, useEffect, useState } from "react";
 import { fetchFromAPI } from "./fetchFromAPI";
 import Footer from "./Footer";
-import Shows from "./Shows";
+import Result from "./Result";
 import Menu from "./Menu";
 import { KeyboardDoubleArrowUp } from "@mui/icons-material";
 import Header from "./Header";
@@ -63,7 +63,7 @@ const Home = () => {
         Top 10 Trending
       </Typography>
 
-      <Shows shows={showsT} />
+      <Result res={showsT} />
 
       <Typography
         variant="h4"
@@ -82,7 +82,7 @@ const Home = () => {
         Top 10 Popular
       </Typography>
 
-      <Shows shows={showsP} />
+      <Result res={showsP} />
 
       <IconButton type="button" onClick={() => window.scrollTo(0, 0)}>
         <KeyboardDoubleArrowUp

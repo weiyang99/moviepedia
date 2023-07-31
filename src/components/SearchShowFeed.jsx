@@ -1,19 +1,14 @@
 import { useState, useEffect, useContext } from "react";
 import { Box, Typography, Stack, Pagination } from "@mui/material";
-import {
-  Link,
-  useLocation,
-  useParams,
-  useSearchParams,
-} from "react-router-dom";
-import Shows from "./Shows";
+import { Link, useLocation, useParams, useSearchParams, } from "react-router-dom";
+import Result from "./Result";
 import { fetchFromAPI } from "./fetchFromAPI";
 import Footer from "./Footer";
 import Menu from "./Menu";
 import { Type } from "./Context";
 
-const SearchFeed = () => {
-  const { searchTerm } = useParams();
+const SearchShowFeed = () => {
+  const { searchShowTerm } = useParams();
   const [shows, setShows] = useState([]);
   const [totalPages, setTotalPages] = useState();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -30,22 +25,22 @@ const SearchFeed = () => {
   useEffect(() => {
     if (!isTv) {
       fetchFromAPI(
-        `search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${searchTerm}&language=en-US&page=${pageN}`
+        `search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${searchShowTerm}&language=en-US&page=${pageN}`
       ).then((data) => setShows(data.results));
 
       fetchFromAPI(
-        `search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${searchTerm}&language=en-US&page=${pageN}`
+        `search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${searchShowTerm}&language=en-US&page=${pageN}`
       ).then((data) => setTotalPages(data.total_pages));
     } else {
       fetchFromAPI(
-        `search/tv?api_key=${process.env.REACT_APP_API_KEY}&query=${searchTerm}&language=en-US&page=${pageN}`
+        `search/tv?api_key=${process.env.REACT_APP_API_KEY}&query=${searchShowTerm}&language=en-US&page=${pageN}`
       ).then((data) => setShows(data.results));
 
       fetchFromAPI(
-        `search/tv?api_key=${process.env.REACT_APP_API_KEY}&query=${searchTerm}&language=en-US&page=${pageN}`
+        `search/tv?api_key=${process.env.REACT_APP_API_KEY}&query=${searchShowTerm}&language=en-US&page=${pageN}`
       ).then((data) => setTotalPages(data.total_pages));
     }
-  }, [searchTerm, pageN]);
+  }, [searchShowTerm, pageN]);
 
   return (
     <>
@@ -89,7 +84,7 @@ const SearchFeed = () => {
             sx={{ color: "white", borderLeft: "7px solid gold" }}
           >
             Search Results for:{" "}
-            <span style={{ color: "gold" }}>{searchTerm}</span>
+            <span style={{ color: "gold" }}>{searchShowTerm}</span>
           </Typography>
 
           <Typography
@@ -103,7 +98,7 @@ const SearchFeed = () => {
             Page: <span style={{ color: "gold" }}>{pageN}</span>
           </Typography>
 
-          <Shows shows={shows} />
+          <Result res={shows} />
 
           <Pagination
             count={totalPages}
@@ -127,4 +122,4 @@ const SearchFeed = () => {
   );
 };
 
-export default SearchFeed;
+export default SearchShowFeed;

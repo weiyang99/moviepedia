@@ -178,10 +178,6 @@ body {
 }
 
 .btn {
-    &:hover {
-        background-color: gold;
-    }
-
     color: black;
     font-size: large;
     font-weight: 700;
@@ -192,6 +188,32 @@ body {
     margin-left: 1em;
     cursor: pointer;
     animation: popping 1.2s infinite ease-in-out;
+}
+
+.btnShow {
+    color: black;
+    font-size: large;
+    font-weight: 700;
+    background-color: rgb(255, 255, 255);
+    padding: .3em 1em;
+    border: white 1px solid;
+    border-radius: 2em;
+    margin-left: 1em;
+    cursor: pointer;
+    animation: popping 1.2s infinite ease-in-out;
+}
+
+.btnCast {
+    color: black;
+    font-size: large;
+    font-weight: 700;
+    background-color: rgb(255, 255, 255);
+    padding: .3em 1em;
+    border: white 1px solid;
+    border-radius: 2em;
+    margin-left: 1em;
+    cursor: pointer;
+    animation: poppingCast 1.2s infinite ease-in-out;
 }
 
 .bg {
@@ -213,6 +235,21 @@ body {
         transform: scale(1.1);
         color: rgba(0, 0, 0, 0.7);
         background-color: rgb(255, 148, 148);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.514);
+    }
+}
+
+@keyframes poppingCast {
+    from {
+        transform: scale(1);
+        background-color: black;
+        color: white;
+    }
+
+    to {
+        transform: scale(1.1);
+        color: black;
+        background-color: rgb(255, 238, 0);
         box-shadow: 0 0 10px rgba(255, 255, 255, 0.514);
     }
 }

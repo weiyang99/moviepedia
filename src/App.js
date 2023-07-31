@@ -2,7 +2,8 @@ import { Box } from "@mui/material";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.scss";
 import Home from "./components/Home";
-import SearchFeed from "./components/SearchFeed";
+import SearchShowFeed from "./components/SearchShowFeed";
+import SearchCastFeed from "./components/SearchCastFeed";
 import ShowDetails from "./components/ShowDetails";
 import Review from "./components/Review";
 import Genre from "./components/Genre";
@@ -14,7 +15,8 @@ function App() {
       <Box>
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route path="/search/:searchTerm" element={<SearchFeed />} />
+          <Route path="/searchShow/:searchShowTerm" element={<SearchShowFeed />} />
+          <Route path="/searchCast/:searchCastTerm" element={<SearchCastFeed />} />
           <Route path="/show/:id/:title" element={<ShowDetails />} />
           <Route path="/review/:id/:title" element={<Review />} />
           <Route path="/genre/:id/:genre" element={<Genre />} />

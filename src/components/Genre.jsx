@@ -1,22 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import Menu from "./Menu";
-import {
-  Box,
-  FormControl,
-  InputLabel,
-  NativeSelect,
-  Pagination,
-  Stack,
-  Typography,
-} from "@mui/material";
-import {
-  Link,
-  useLocation,
-  useParams,
-  useSearchParams,
-} from "react-router-dom";
+import { Box, FormControl, InputLabel, NativeSelect, Pagination, Stack, Typography } from "@mui/material";
+import { Link, useLocation, useParams, useSearchParams } from "react-router-dom";
 import { fetchFromAPI } from "./fetchFromAPI";
-import Shows from "./Shows";
+import Result from "./Result";
 import Footer from "./Footer";
 import { Type } from "./Context";
 
@@ -44,34 +31,14 @@ const Genre = () => {
 
   useEffect(() => {
     if (!isTv) {
-      fetchFromAPI(
-        `discover/movie?api_key=${
-          process.env.REACT_APP_API_KEY
-        }&language=en-US&sort_by=${
-          !filter ? "popularity.desc" : filter
-        }&page=${pageN}&with_genres=${id}`
+      fetchFromAPI(`discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=${!filter ? "popularity.desc" : filter}&page=${pageN}&with_genres=${id}`
       ).then((data) => setShows(data.results));
-      fetchFromAPI(
-        `discover/movie?api_key=${
-          process.env.REACT_APP_API_KEY
-        }&language=en-US&sort_by=${
-          !filter ? "popularity.desc" : filter
-        }&page=${pageN}&with_genres=${id}`
+      fetchFromAPI(`discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=${!filter ? "popularity.desc" : filter}&page=${pageN}&with_genres=${id}`
       ).then((data) => setTotalPages(data.total_pages));
     } else {
-      fetchFromAPI(
-        `discover/tv?api_key=${
-          process.env.REACT_APP_API_KEY
-        }&language=en-US&sort_by=${
-          !filter ? "popularity.desc" : filter
-        }&page=${pageN}&with_genres=${id}`
+      fetchFromAPI(`discover/tv?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=${!filter ? "popularity.desc" : filter}&page=${pageN}&with_genres=${id}`
       ).then((data) => setShows(data.results));
-      fetchFromAPI(
-        `discover/tv?api_key=${
-          process.env.REACT_APP_API_KEY
-        }&language=en-US&sort_by=${
-          !filter ? "popularity.desc" : filter
-        }&page=${pageN}&with_genres=${id}`
+      fetchFromAPI(`discover/tv?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=${!filter ? "popularity.desc" : filter}&page=${pageN}&with_genres=${id}`
       ).then((data) => setTotalPages(data.total_pages));
     }
   }, [id, filter, pageN]);
@@ -179,7 +146,7 @@ const Genre = () => {
             </FormControl>
           </Stack>
 
-          <Shows shows={shows} />
+          <Result res={shows} />
 
           <Pagination
             count={totalPages}

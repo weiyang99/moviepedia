@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Box, Typography } from "@mui/material";
 import { fetchFromAPI } from "./fetchFromAPI";
-import Shows from "./Shows";
+import Result from "./Result";
 import { Type } from "./Context";
 
 const SimilarShows = ({ id }) => {
@@ -32,7 +32,7 @@ const SimilarShows = ({ id }) => {
       >
         Recommendations
       </Typography>
-      <Shows shows={similarShows} />
+      <Result res={similarShows} />
     </Box>
   );
 };
