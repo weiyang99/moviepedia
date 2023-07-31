@@ -30,11 +30,11 @@ const Header = () => {
 
       {window.location.pathname === "/" && isTv ? (
         <button className="btn" onClick={() => setIsTv(false)}>
-          Movie
+          Switch
         </button>
       ) : (
         <button className="btn" onClick={() => setIsTv(true)}>
-          Tv
+          Switch
         </button>
       )}
     </Stack>

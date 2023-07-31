@@ -187,11 +187,11 @@ body {
     font-weight: 700;
     background-color: rgb(255, 255, 255);
     padding: .3em 1em;
-    border: none;
+    border: white 1px solid;
     border-radius: 2em;
     margin-left: 1em;
     cursor: pointer;
-    animation: popping 1s infinite ease;
+    animation: popping 1.2s infinite ease-in-out;
 }
 
 .bg {
@@ -205,12 +205,14 @@ body {
 @keyframes popping {
     from {
         transform: scale(1);
-        background-color: gray;
+        background-color: black;
+        color: white;
     }
 
     to {
         transform: scale(1.1);
-        background-color: rgb(255, 141, 141);
-        box-shadow: 0 2.8px 10px rgba(255, 255, 255, 0.514);
+        color: rgba(0, 0, 0, 0.7);
+        background-color: rgb(255, 148, 148);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.514);
     }
 }
