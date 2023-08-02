@@ -40,6 +40,8 @@ const SearchShowFeed = () => {
         `search/tv?api_key=${process.env.REACT_APP_API_KEY}&query=${searchShowTerm}&language=en-US&page=${pageN}`
       ).then((data) => setTotalPages(data.total_pages));
     }
+
+    window.scrollTo(0, 0);
   }, [searchShowTerm, pageN]);
 
   return (

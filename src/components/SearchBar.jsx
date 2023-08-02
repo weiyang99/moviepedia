@@ -18,7 +18,7 @@ const SearchBar = () => {
 
   useEffect(() => {
     sessionStorage.setItem('cast', JSON.stringify(searchCast));
-  }, [searchCast, searchTerm]);
+  }, [searchCast]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

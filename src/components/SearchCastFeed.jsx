@@ -30,6 +30,8 @@ const SearchCastFeed = () => {
         fetchFromAPI(
             `search/person?api_key=${process.env.REACT_APP_API_KEY}&query=${searchCastTerm}&language=en-US&page=${pageN}`
         ).then((data) => setTotalPages(data.total_pages));
+
+        window.scrollTo(0, 0);
     }, [searchCastTerm, pageN]);
 
     return (
