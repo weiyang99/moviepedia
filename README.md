@@ -1,6 +1,15 @@
-# Getting Started with Create React App
+![Showpedia](/public/showcase_show.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project Title: Showpedia
+
+## Description:
+This is a React.js app that focuses on displaying show details.
+Here are some usages of the app:
+- Finding shows / casts through search
+- Finding shows through categories (can be sorted by popularity, release date, vote counts)
+- View show details
+- View cast details
+- View reviews of show
 
 ## Available Scripts
 
