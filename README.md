@@ -11,4 +11,5 @@ Here are some usages of the app:
 - View cast details
 - View reviews of show
 
-[link](https://showpedia.vercel.app/)
+## Link
+https://showpedia.vercel.app/
